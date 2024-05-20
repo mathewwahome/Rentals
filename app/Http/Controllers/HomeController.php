@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    //
     public function dashboard()
     {
         return view('dashboard.index');
@@ -31,4 +30,10 @@ class HomeController extends Controller
     {
         return view('dashboard.pages.houses.houses');
     }
+    public function adminsettings(){
+        return view('dashboard.pages.admin.admin');
+    }  public function admintheme(){
+        return view('dashboard.pages.admin.theme');
+    }
+    //
 }

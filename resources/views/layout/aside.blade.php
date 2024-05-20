@@ -15,7 +15,6 @@
                 </li>
               
                 <li class="menu-title">Bills</li>
-                <!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Bills</a>
                     <ul class="sub-menu children dropdown-menu">
@@ -24,20 +23,18 @@
                     </ul>
                 </li>
                 <li class="menu-title">Houses</li>
-                <!-- /.menu-title -->
                 <li>
                     <a href="{{route('houses')}}"> <i class="menu-icon ti-email"></i>Houses </a>
                 </li>
                 <li class="menu-title">Theme</li>
-                <!-- /.menu-title -->
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Theme</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="page-login.html">Settings</a></li>
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="page-register.html">Admin</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('admintheme')}}">Theme Settings</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('adminsettings')}}">Admin</a></li>
                     </ul>
                 </li>
             </ul>
-        </div><!-- /.navbar-collapse -->
+        </div>
     </nav>
 </aside>
