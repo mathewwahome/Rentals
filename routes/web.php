@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Authcontroller;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HouseController;
 
 Route::get('/', function () {
@@ -11,8 +12,8 @@ Route::get('/', function () {
 });
 Route::get('/login', [Authcontroller::class, 'login' ])->name('login');
 Route::get('/dashboard', [Homecontroller::class, 'dashboard' ])->name('dashboard');
-Route::get('view-clients', [Homecontroller::class, 'viewclients' ])->name('viewclients');
-Route::get('new-clients', [Homecontroller::class, 'newclients' ])->name('newclients');
+Route::get('view-clients', [ClientController::class, 'viewclients' ])->name('viewclients');
+Route::get('new-clients', [ClientController::class, 'newclients' ])->name('newclients');
 Route::get('water-bills', [Homecontroller::class, 'waterbills' ])->name('water-bills');
 Route::get('rent', [Homecontroller::class, 'rent' ])->name('rent');
 Route::get('houses', [Homecontroller::class, 'houses' ])->name('houses');
@@ -23,6 +24,10 @@ Route::get('new-app-user', [Homecontroller::class, 'newappuser' ])->name('new-ap
 //
 
 Route::post('/add-new-client', [AdminController::class, 'store'])->name('add-new-client');
+
+//view a single client
+Route::get('/clients/{client}', [ClientController::class, 'singleclient'])->name('single.client');
+Route::post('/client/details', [ClientController::class, 'clientview'])->name('client.view');
 
 //
 

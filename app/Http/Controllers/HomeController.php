@@ -10,14 +10,7 @@ class HomeController extends Controller
     {
         return view('dashboard.index');
     }
-    public function viewclients()
-    {
-        return view('dashboard.pages.client.client');
-    }
-    public function newclients()
-    {
-        return view('dashboard.pages.client.newclient');
-    }
+  
     public function waterbills()
     {
         return view('dashboard.pages.bills.waterbills.waterbills');
