@@ -48,7 +48,7 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-1">
-                                        <i class="pe-7s-browser"></i>
+                                        <i class="pe-7s-home"></i>
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
@@ -66,7 +66,7 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-2">
-                                        <i class="pe-7s-cart"></i>
+                                        <i class="pe-7s-home"></i>
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
@@ -84,7 +84,7 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-3">
-                                        <i class="pe-7s-browser"></i>
+                                        <i class="pe-7s-home"></i>
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
@@ -130,7 +130,7 @@
                                     <div class="input-group">
                                         <input type="file" id="username2" name="username2" placeholder="Username"
                                             class="form-control">
-                                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                        <div class="input-group-addon"><i class="pe-7s-home"></i></div>
                                     </div>
                                 </div>
                                 <div class="form-actions form-group">
@@ -154,7 +154,7 @@
                                         <th>House NO.</th>
                                         <th>Rooms</th>
                                         <th>status</th>
-                                        <th>exdit</th>
+                                        <th>edit</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -163,7 +163,14 @@
                                             <td>{{ $house->house_no }}</td>
                                             <td>{{ $house->rooms }}</td>
                                             <td>{{ $house->status }}</td>
-                                            <td><button>edit</button></td>
+                                            <td>
+                                                <div class="row ml-2">
+                                                   
+                                                    <a class="btn btn-secondary ml-2"
+                                                        href="{{ route('single.house', ['house' => $house->id]) }}"><i
+                                                        class="ti ti-book"></i></a>
+                                                </div>
+                                            </td>
                                         </tr>
                                     @endforeach
 

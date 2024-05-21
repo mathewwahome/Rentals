@@ -64,32 +64,29 @@
 </head>
 
 <body>
-    <!-- Left Panel -->
+    @php
+        $webusers =  App\Models\WebUsers::count();
+        $appusers =  App\Models\WebUsers::count();
+         $t_houses = App\Models\Houses::count();
+         $t_clients = App\Models\Clients::count();
+    @endphp
     @include('layout.aside')
-    <!-- /#left-panel -->
-
-    <!-- Right Panel -->
     <div id="right-panel" class="right-panel">
-        <!-- Header-->
        @include('layout.header')
-        <!-- /#header -->
-        <!-- Content -->
         <div class="content">
-            <!-- Animated -->
             <div class="animated fadeIn">
-                <!-- Widgets  -->
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-1">
-                                        <i class="pe-7s-cash"></i>
+                                        <i class="pe-7s-users"></i>
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text">$<span class="count">23569</span></div>
-                                            <div class="stat-heading">Revenue</div>
+                                            <div class="stat-text"><span class="count">{{$webusers}}</span></div>
+                                            <div class="stat-heading">Web Users</div>
                                         </div>
                                     </div>
                                 </div>
@@ -106,8 +103,8 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">3435</span></div>
-                                            <div class="stat-heading">Sales</div>
+                                            <div class="stat-text"><span class="count">{{$t_houses}}</span></div>
+                                            <div class="stat-heading">Total Houses</div>
                                         </div>
                                     </div>
                                 </div>
@@ -124,8 +121,8 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">349</span></div>
-                                            <div class="stat-heading">Templates</div>
+                                            <div class="stat-text"><span class="count">{{$appusers}}</span></div>
+                                            <div class="stat-heading">App Users</div>
                                         </div>
                                     </div>
                                 </div>
@@ -142,8 +139,8 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">2986</span></div>
-                                            <div class="stat-heading">Clients</div>
+                                            <div class="stat-text"><span class="count">{{$t_clients}}</span></div>
+                                            <div class="stat-heading">Total Clients</div>
                                         </div>
                                     </div>
                                 </div>
