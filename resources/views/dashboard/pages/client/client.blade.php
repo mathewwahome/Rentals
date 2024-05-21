@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Rental</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -171,10 +171,13 @@
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
+                                            <th>ID</th>
                                             <th>Client Name</th>
                                             <th>Client Email</th>
                                             <th>Phone</th>
                                             <th>House No.</th>
+                                            <th>Status.</th>
+                                            <th>...</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -183,10 +186,15 @@
                                         @endphp
                                         @foreach ($clients as $client)
                                             <tr>
+                                                <td>{{ $client->id }}</td>
                                                 <td>{{ $client->client_name }}</td>
                                                 <td>{{ $client->email }}</td>
                                                 <td>{{ $client->phone }}</td>
                                                 <td>{{ $client->house_no }}</td>
+                                                <td>status</td>
+                                                <td>
+                                                    <button>view</button><button>del</button><button>Edit</button>
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>

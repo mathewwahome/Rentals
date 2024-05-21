@@ -4,10 +4,10 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Authcontroller;
-
+use App\Http\Controllers\HouseController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 Route::get('/login', [Authcontroller::class, 'login' ])->name('login');
 Route::get('/dashboard', [Homecontroller::class, 'dashboard' ])->name('dashboard');
@@ -23,3 +23,7 @@ Route::get('new-app-user', [Homecontroller::class, 'newappuser' ])->name('new-ap
 //
 
 Route::post('/add-new-client', [AdminController::class, 'store'])->name('add-new-client');
+
+//
+
+Route::post('houses-importer', [HouseController::class, 'import'])->name('houses-importer');

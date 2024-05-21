@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ela Admin - HTML5 Admin Template</title>
+    <title>Rental</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -74,25 +74,22 @@
                                         <label class=" form-control-label">client name</label>
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                            <input class="form-control"  required name="client_name">
+                                            <input class="form-control" required name="client_name">
                                         </div>
-                                        <small class="form-text text-muted">ex. 99/99/9999</small>
                                     </div>
                                     <div class="form-group">
                                         <label class=" form-control-label">Phone</label>
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-phone"></i></div>
-                                            <input class="form-control"  required name="phone">
+                                            <input class="form-control" required name="phone">
                                         </div>
-                                        <small class="form-text text-muted">ex. (999) 999-9999</small>
                                     </div>
                                     <div class="form-group">
                                         <label class=" form-control-label">Email</label>
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-envelope-o"></i></div>
-                                            <input class="form-control" type="email" required  name="email">
+                                            <input class="form-control" type="email" required name="email">
                                         </div>
-                                        <small class="form-text text-muted">ex. 99-9999999</small>
                                     </div>
                                     <div class="form-group">
                                         <label class=" form-control-label">ID</label>
@@ -100,18 +97,32 @@
                                             <div class="input-group-addon"><i class="fa fa-male"></i></div>
                                             <input class="form-control" required type="number" name="id">
                                         </div>
-                                        <small class="form-text text-muted">ex. 999-99-9999</small>
                                     </div>
                                     <div class="form-group">
                                         <label class=" form-control-label">Entry Date</label>
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                            <input class="form-control"  required type="date" name="entry_date">
+                                            <input class="form-control" required type="date" name="entry_date">
                                         </div>
-                                        <small class="form-text text-muted">ex. ~9.99 ~9.99 999</small>
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit">add</button>
+                                        <label class=" form-control-label">House No</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                            <select name="house_no" class="form-control" required id="house_no">
+                                                @php
+                                                    $houses = App\Models\Houses::all();
+                                                @endphp
+                                                @foreach ($houses as $house)
+                                                    <option value="{{ $house->house_no }}">{{ $house->house_no }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit"
+                                            class="btn btn-secondary btn-sm form-control">Create</button>
                                     </div>
                                 </form>
 
