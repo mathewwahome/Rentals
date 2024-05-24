@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -114,7 +115,7 @@
                                     <div class="stat-content">
                                         <div class="text-left dib">
                                             <div class="stat-text"><span class="count">3</span></div>
-                                            <div class="stat-heading">Active Users</div>
+                                            <div class="stat-heading">Web Users</div>
                                         </div>
                                     </div>
                                 </div>
@@ -168,33 +169,38 @@
                             <div class="card">
                                 <div class="card-header">New Web User</div>
                                 <div class="card-body card-block">
-                                    <form action="{{route('new-web-user')}}" method="post" class="">
+                                    <form action="{{ route('new-web-user') }}" method="post" class="">
                                         @csrf
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <input type="text" id="username2" name="username2" placeholder="Username" class="form-control">
+                                                <input type="text" id="username" name="username"
+                                                    placeholder="Username" class="form-control">
                                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <input type="email" id="email2" name="email2" placeholder="Email" class="form-control">
+                                                <input type="email" id="email" name="email"
+                                                    placeholder="Email" class="form-control">
                                                 <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <input type="password" id="password1" name="password1" placeholder="Password" class="form-control">
+                                                <input type="password" id="password1" name="password1"
+                                                    placeholder="Password" class="form-control">
                                                 <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <input type="password" id="password2" name="password2" placeholder="Confirm Password" class="form-control">
+                                                <input type="password" id="password" name="password"
+                                                    placeholder="Confirm Password" class="form-control">
                                                 <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
                                             </div>
                                         </div>
-                                        <div class="form-actions form-group"><button type="submit" class="btn btn-secondary btn-sm">Submit</button></div>
+                                        <div class="form-actions form-group"><button type="submit"
+                                                class="btn btn-secondary btn-sm">Submit</button></div>
                                     </form>
                                 </div>
                             </div>
@@ -203,32 +209,37 @@
                             <div class="card">
                                 <div class="card-header">New App User</div>
                                 <div class="card-body card-block">
-                                    <form action="{{route('new-app-user')}}" method="post" class="">
+                                    <form action="{{ route('new-app-user') }}" method="post" class="">
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <input type="text" id="username2" name="username2" placeholder="Username" class="form-control">
+                                                <input type="text" id="username2" name="username2"
+                                                    placeholder="Username" class="form-control">
                                                 <div class="input-group-addon"><i class="fa fa-user"></i></div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <input type="email" id="email2" name="email2" placeholder="Email" class="form-control">
+                                                <input type="email" id="email2" name="email2"
+                                                    placeholder="Email" class="form-control">
                                                 <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <input type="password" id="password1" name="password1" placeholder="Password" class="form-control">
+                                                <input type="password" id="password1" name="password1"
+                                                    placeholder="Password" class="form-control">
                                                 <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <input type="password" id="password2" name="password2" placeholder="Confirm Password" class="form-control">
+                                                <input type="password" id="password2" name="password2"
+                                                    placeholder="Confirm Password" class="form-control">
                                                 <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
                                             </div>
                                         </div>
-                                        <div class="form-actions form-group"><button type="submit" class="btn btn-secondary btn-sm">Submit</button></div>
+                                        <div class="form-actions form-group"><button type="submit"
+                                                class="btn btn-secondary btn-sm">Submit</button></div>
                                     </form>
                                 </div>
                             </div>
@@ -236,7 +247,7 @@
                         <div class="col-xl-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="box-title">users</h4>
+                                    <h4 class="box-title">Web Users</h4>
                                 </div>
                                 <div class="card-body--">
                                     <div class="table-stats order-table ov-h">
@@ -252,66 +263,84 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="serial">3.</td>
-                                                    <td class="avatar">
-                                                        <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle" src="images/avatar/3.jpg" alt=""></a>
-                                                        </div>
-                                                    </td>
-                                                    <td> #5467 </td>
-                                                    <td> <span class="name">Catherine Dixon</span> </td>
-                                                    <td> <span class="product">SSD</span> </td>
-                                                    <td><span class="count">250</span></td>
-                                                    <td>
-                                                        <span class="badge badge-complete">Complete</span>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="serial">4.</td>
-                                                    <td class="avatar">
-                                                        <div class="round-img">
-                                                            <a href="#"><img class="rounded-circle" src="images/avatar/4.jpg" alt=""></a>
-                                                        </div>
-                                                    </td>
-                                                    <td> #5466 </td>
-                                                    <td> <span class="name">Mary Silva</span> </td>
-                                                    <td> <span class="product">Magic Mouse</span> </td>
-                                                    <td><span class="count">250</span></td>
-                                                    <td>
-                                                        <span class="badge badge-pending">Pending</span>
-                                                    </td>
-                                                </tr>
-                                              
+                                                @php
+                                                    $webusers = App\Models\WebUsers::all();
+                                                @endphp
+                                                @foreach ($webusers as $webuser)
+                                                    <tr>
+                                                        <td class="serial">{{$webuser->id}}</td>
+                                                        <td class="avatar">
+                                                            <div class="round-img">
+                                                                <a href="#"><img class="rounded-circle"
+                                                                        src="images/avatar/3.jpg" alt=""></a>
+                                                            </div>
+                                                        </td>
+                                                        <td> {{$webuser->name}} </td>
+                                                        <td> <span class="name">{{$webuser->email}}</span> </td>
+                                                        <td> <span class="product">{{$webuser->role}}</span> </td>
+                                                        <td>
+                                                            <span class="badge badge-complete">Verified</span>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
-                                    </div> <!-- /.table-stats -->
+                                    </div>
                                 </div>
-                            </div> <!-- /.card -->
+                            </div>
+                        </div>
+                        <div class="col-xl-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="box-title">Web Users</h4>
+                                </div>
+                                <div class="card-body--">
+                                    <div class="table-stats order-table ov-h">
+                                        <table class="table ">
+                                            <thead>
+                                                <tr>
+                                                    <th class="serial">ID</th>
+                                                    <th class="avatar">User profile</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Role</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @php
+                                                    $appusers = App\Models\AppUsers::all();
+                                                @endphp
+                                                @foreach ($appusers as $appuser)
+                                                    <tr>
+                                                        <td class="serial">{{$appuser->id}}</td>
+                                                        <td class="avatar">
+                                                            <div class="round-img">
+                                                                <a href="#"><img class="rounded-circle"
+                                                                        src="images/avatar/3.jpg" alt=""></a>
+                                                            </div>
+                                                        </td>
+                                                        <td> {{$appuser->name}} </td>
+                                                        <td> <span class="name">{{$appuser->email}}</span> </td>
+                                                        <td> <span class="product">{{$appuser->role}}</span> </td>
+                                                        <td>
+                                                            <span class="badge badge-complete">Verified</span>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- .animated -->
         </div>
-        <!-- /.content -->
         <div class="clearfix"></div>
-        <!-- Footer -->
-        <footer class="site-footer">
-            <div class="footer-inner bg-white">
-                <div class="row">
-                    <div class="col-sm-6">
-                        Copyright &copy; 2018 Ela Admin
-                    </div>
-                    <div class="col-sm-6 text-right">
-                        Designed by <a href="https://colorlib.com">Colorlib</a>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <!-- /.site-footer -->
+       @include('layout.footer')
     </div>
-    <!-- /#right-panel -->
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
@@ -494,7 +523,8 @@
                             d: {
                                 begin: 2000 * data.index,
                                 dur: 2000,
-                                from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+                                from: data.path.clone().scale(1, 0).translate(0, data.chartRect
+                                    .height()).stringify(),
                                 to: data.path.clone().stringify(),
                                 easing: Chartist.Svg.Easing.easeOutQuint
                             }

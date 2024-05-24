@@ -10,14 +10,15 @@
                     <h1>Rentals</h1>
                 </div>
                 <div class="login-form">
-                    <form>
+                    <form method="POST" action="{{route('user.login')}}">
+                        @csrf
                         <div class="form-group">
                             <label>Email address</label>
-                            <input type="email" class="form-control" placeholder="Email">
+                            <input type="email" class="form-control" name="email" placeholder="Email">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input type="password" class="form-control" placeholder="Password">
+                            <input type="password" class="form-control" name="password" placeholder="Password">
                         </div>
                         <div class="checkbox">
                             <label>

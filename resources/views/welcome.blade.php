@@ -10,7 +10,7 @@
                     <h1>Rentals</h1>
                 </div>
                 <div class="login-form">
-                    <form method="POST" action="{{route('login-now')}}">
+                    <form method="POST" action="{{route('user.login')}}">
                         <div class="form-group">
                             <label>Email address</label>
                             <input type="email" class="form-control" placeholder="Email">

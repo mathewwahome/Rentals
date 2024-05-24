@@ -26,13 +26,13 @@
                 <li>
                     <a href="{{route('houses')}}"> <i class="menu-icon fa fa-building-o"></i>Houses </a>
                 </li>
-                <li class="menu-title">Settings</li>
+                <li class="menu-title">Admin</li>
                 <li>
                     <a href="{{route('admintheme')}}"> <i class="menu-icon fa fa-windows"></i>Theme </a>
 
                 </li> 
                 <li>
-                    <a href="{{route('adminsettings')}}"> <i class="menu-icon fa fa-users"></i>Users </a>
+                    <a href="{{route('users')}}"> <i class="menu-icon fa fa-users"></i>Users </a>
 
                 </li>
                 

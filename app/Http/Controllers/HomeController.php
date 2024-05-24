@@ -10,7 +10,7 @@ class HomeController extends Controller
     {
         return view('dashboard.index');
     }
-  
+
     public function waterbills()
     {
         return view('dashboard.pages.bills.waterbills.waterbills');
@@ -23,9 +23,12 @@ class HomeController extends Controller
     {
         return view('dashboard.pages.houses.houses');
     }
-    public function adminsettings(){
-        return view('dashboard.pages.admin.admin');
-    }  public function admintheme(){
+    public function users()
+    {
+        return view('dashboard.pages.admin.users');
+    }
+    public function admintheme()
+    {
         return view('dashboard.pages.admin.theme');
     }
     //

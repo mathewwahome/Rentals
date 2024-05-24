@@ -66,63 +66,69 @@
 
         <div class="content">
             <div class="animated fadeIn">
+                <form action="{{ route('theme') }}" method="post">
+                    @csrf
 
-                <div class="row">
 
-                    <div class="col-xs-6 col-sm-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong>Masked Input</strong> <small> Small Text Mask</small>
-                            </div>
-                            <div class="card-body card-block">
-                                <div class="form-group">
-                                    <label class=" form-control-label">Site Name</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                        <input class="form-control">
-                                    </div>
-                                    <small class="form-text text-muted">ex. Rentals</small>
+                    <div class="row">
+
+                        <div class="col-xs-6 col-sm-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong>Masked Input</strong> <small> Small Text Mask</small>
                                 </div>
-                                <div class="form-group">
-                                    <label class=" form-control-label">Contact Phone</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-phone"></i></div>
-                                        <input class="form-control">
+                                <div class="card-body card-block">
+                                    <div class="form-group">
+                                        <label class=" form-control-label">Site Name</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                                            <input class="form-control">
+                                        </div>
+                                        <small class="form-text text-muted">ex. Rentals</small>
                                     </div>
-                                    <small class="form-text text-muted">ex. +254 7787 887 989</small>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" form-control-label">Site Email</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-male"></i></div>
-                                        <input class="form-control">
+                                    <div class="form-group">
+                                        <label class=" form-control-label">Contact Phone</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-phone"></i></div>
+                                            <input class="form-control">
+                                        </div>
+                                        <small class="form-text text-muted">ex. +254 7787 887 989</small>
                                     </div>
-                                    <small class="form-text text-muted">ex. rental@example.com</small>
+                                    <div class="form-group">
+                                        <label class=" form-control-label">Site Email</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-male"></i></div>
+                                            <input class="form-control">
+                                        </div>
+                                        <small class="form-text text-muted">ex. rental@example.com</small>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="col-xs-6 col-sm-6">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong class="card-title">Location</strong>
-                            </div>
-                            <div class="card-body">
+                        <div class="col-xs-6 col-sm-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <strong class="card-title">Location</strong>
+                                </div>
+                                <div class="card-body">
 
-                                <select data-placeholder="Choose a Country..." class="standardSelect" tabindex="1">
-                                    <option value="" label="default"></option>
-                                    <option value="United States">Kajiando</option>
-                                    <option value="United Kingdom">Nyeri</option>
-                                </select>
+                                    <select data-placeholder="Choose a Country..." class="standardSelect"
+                                        tabindex="1">
+                                        <option value="" label="default"></option>
+                                        <option value="United States">Kajiando</option>
+                                        <option value="United Kingdom">Nyeri</option>
+                                    </select>
+                                </div>
                             </div>
+
+
                         </div>
-
-
+                        <div class="col-xs-12 col-sm-12">
+<button type="submit"  class="btn btn-seccondary">Update</button>
+                        </div>
                     </div>
-
-                </div>
-
+                </form>
             </div>
 
 
