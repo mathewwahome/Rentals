@@ -25,6 +25,7 @@ class ThemeController extends Controller
             $theme->email = $request->email;
             $theme->phone = $request->phone;
             $theme->location = $request->location;
+            $theme->logo = $request->logo;
             $saved = $theme->save();
         } else {
             $theme = new Theme();
@@ -32,6 +33,7 @@ class ThemeController extends Controller
             $theme->email = $request->email;
             $theme->phone = $request->phone;
             $theme->location = $request->location;
+            $theme->logo = $request->logo;
             $saved = $theme->save();
         }
         if ($saved) {
@@ -39,7 +41,8 @@ class ThemeController extends Controller
                 'name' => $theme->name,
                 'email' => $theme->email,
                 'phone' => $theme->phone,
-                'location' => $theme->location
+                'location' => $theme->location,
+                'logo' => $theme->logo
             ];
         
             $jsonData = json_encode($themeData);
