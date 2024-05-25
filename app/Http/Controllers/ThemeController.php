@@ -53,4 +53,7 @@ class ThemeController extends Controller
             return redirect()->back();
         }
     }
+
+
+   
 }

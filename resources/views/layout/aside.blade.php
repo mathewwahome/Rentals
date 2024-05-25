@@ -20,16 +20,40 @@
                         <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('water-bills')}}">Water Bills</a></li>
                         <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('rent')}}">Rent</a></li>
                     </ul>
-                </li>
+                </li> 
                 <li class="menu-title">Houses</li>
                 <li>
                     <a href="{{route('houses')}}"> <i class="menu-icon fa fa-building-o"></i>Houses </a>
                 </li>
+                {{--  --}}
+               
+                <li class="menu-title">Reports</li>
+                
+                 <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-money"></i>Generate</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('not.out.all')}}">All</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('not.out.all')}}">SMS</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('not.out.all')}}">Email</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('not.out.water-bills')}}">Water Bills</a></li>
+                    </ul>
+                </li>
+                {{--  --}}
+                
                 <li class="menu-title">Notifications</li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-money"></i>Incomming</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('rent')}}">All</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('not.in.all')}}">All</a></li>
+                    </ul>
+                </li> 
+                 <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-money"></i>Outgoing</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('not.out.all')}}">All</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('not.out.all')}}">SMS</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('not.out.all')}}">Email</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('not.out.water-bills')}}">Water Bills</a></li>
                     </ul>
                 </li>
                 <li class="menu-title">Admin</li>
