@@ -27,9 +27,6 @@ class HomeController extends Controller
     {
         return view('dashboard.pages.admin.users');
     }
-    public function admintheme()
-    {
-        return view('dashboard.pages.admin.theme');
-    }
+ 
     //
 }

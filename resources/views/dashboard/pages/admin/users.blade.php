@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
     <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
 
@@ -72,20 +71,17 @@
 </head>
 
 <body>
-    <!-- Left Panel -->
+    @php
+        $webusers = App\Models\WebUsers::count();
+        $appusers = App\Models\AppUsers::count();
+        $inactiveusers = App\Models\AppUsers::count();//where status === inactive
+        $totalusers = $webusers + $appusers;
+    @endphp
     @include('layout.aside')
-    <!-- /#left-panel -->
-
-    <!-- Right Panel -->
     <div id="right-panel" class="right-panel">
-        <!-- Header-->
         @include('layout.header')
-        <!-- /#header -->
-        <!-- Content -->
         <div class="content">
-            <!-- Animated -->
             <div class="animated fadeIn">
-                <!-- Widgets  -->
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
@@ -96,7 +92,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">8</span></div>
+                                            <div class="stat-text"><span class="count">{{$totalusers}}</span></div>
                                             <div class="stat-heading">All Users</div>
                                         </div>
                                     </div>
@@ -114,7 +110,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">3</span></div>
+                                            <div class="stat-text"><span class="count">{{$webusers}}</span></div>
                                             <div class="stat-heading">Web Users</div>
                                         </div>
                                     </div>
@@ -132,7 +128,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">1</span></div>
+                                            <div class="stat-text"><span class="count">{{$inactiveusers}}</span></div>
                                             <div class="stat-heading">Inactive Users</div>
                                         </div>
                                     </div>
@@ -150,7 +146,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">4</span></div>
+                                            <div class="stat-text"><span class="count">{{$appusers}}</span></div>
                                             <div class="stat-heading">App Users</div>
                                         </div>
                                     </div>
@@ -268,16 +264,16 @@
                                                 @endphp
                                                 @foreach ($webusers as $webuser)
                                                     <tr>
-                                                        <td class="serial">{{$webuser->id}}</td>
+                                                        <td class="serial">{{ $webuser->id }}</td>
                                                         <td class="avatar">
                                                             <div class="round-img">
                                                                 <a href="#"><img class="rounded-circle"
                                                                         src="images/avatar/3.jpg" alt=""></a>
                                                             </div>
                                                         </td>
-                                                        <td> {{$webuser->name}} </td>
-                                                        <td> <span class="name">{{$webuser->email}}</span> </td>
-                                                        <td> <span class="product">{{$webuser->role}}</span> </td>
+                                                        <td> {{ $webuser->name }} </td>
+                                                        <td> <span class="name">{{ $webuser->email }}</span> </td>
+                                                        <td> <span class="product">{{ $webuser->role }}</span> </td>
                                                         <td>
                                                             <span class="badge badge-complete">Verified</span>
                                                         </td>
@@ -313,16 +309,16 @@
                                                 @endphp
                                                 @foreach ($appusers as $appuser)
                                                     <tr>
-                                                        <td class="serial">{{$appuser->id}}</td>
+                                                        <td class="serial">{{ $appuser->id }}</td>
                                                         <td class="avatar">
                                                             <div class="round-img">
                                                                 <a href="#"><img class="rounded-circle"
                                                                         src="images/avatar/3.jpg" alt=""></a>
                                                             </div>
                                                         </td>
-                                                        <td> {{$appuser->name}} </td>
-                                                        <td> <span class="name">{{$appuser->email}}</span> </td>
-                                                        <td> <span class="product">{{$appuser->role}}</span> </td>
+                                                        <td> {{ $appuser->name }} </td>
+                                                        <td> <span class="name">{{ $appuser->email }}</span> </td>
+                                                        <td> <span class="product">{{ $appuser->role }}</span> </td>
                                                         <td>
                                                             <span class="badge badge-complete">Verified</span>
                                                         </td>
@@ -339,7 +335,7 @@
             </div>
         </div>
         <div class="clearfix"></div>
-       @include('layout.footer')
+        @include('layout.footer')
     </div>
 
     <!-- Scripts -->

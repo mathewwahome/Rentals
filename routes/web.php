@@ -7,6 +7,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HouseController;
+use App\Http\Controllers\NotificationsController;
+use App\Http\Controllers\ThemeController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -20,8 +22,8 @@ Route::get('water-bills', [Homecontroller::class, 'waterbills'])->name('water-bi
 Route::get('rent', [Homecontroller::class, 'rent'])->name('rent');
 Route::get('houses', [Homecontroller::class, 'houses'])->name('houses');
 Route::get('users', [Homecontroller::class, 'users'])->name('users');
-Route::get('admintheme', [Homecontroller::class, 'admintheme'])->name('admintheme');
-Route::get('theme', [Homecontroller::class, 'admin'])->name('theme');
+Route::get('admintheme', [ThemeController::class, 'admintheme'])->name('admintheme');
+Route::post('theme', [ThemeController::class, 'theme'])->name('theme');
 //
 
 Route::post('new-web-user', [Authcontroller::class, 'newwebuser'])->name('new-web-user');
@@ -41,4 +43,3 @@ Route::post('houses-importer', [HouseController::class, 'import'])->name('houses
 Route::get('single/house/{house}', [HouseController::class, 'singlehouse'])->name('single.house');
 //sms sending
 Route::get('sendSMS', [AfricasTalkingController::class, 'sendSMS'])->name('sendSMS');
-
