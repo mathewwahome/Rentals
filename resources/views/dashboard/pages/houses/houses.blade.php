@@ -128,7 +128,7 @@
                                 @csrf
                                 <div class="form-group">
                                     <div class="input-group">
-                                        <input type="file" id="username2" name="username2" placeholder="Username"
+                                        <input type="file" id="houses" name="houses" placeholder="Houses"
                                             class="form-control">
                                         <div class="input-group-addon"><i class="pe-7s-home"></i></div>
                                     </div>
@@ -153,6 +153,7 @@
                                     <tr>
                                         <th>House NO.</th>
                                         <th>Rooms</th>
+                                        <th>price</th>
                                         <th>status</th>
                                         <th>edit</th>
                                     </tr>
@@ -162,6 +163,7 @@
                                         <tr>
                                             <td>{{ $house->house_no }}</td>
                                             <td>{{ $house->rooms }}</td>
+                                            <td>{{ $house->price }}</td>
                                             <td>{{ $house->status }}</td>
                                             <td>
                                                 <div class="row ml-2">

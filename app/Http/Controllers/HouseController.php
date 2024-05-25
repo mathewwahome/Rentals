@@ -14,9 +14,9 @@ class HouseController extends Controller
     public function import(Request $request)
     {
         $request->validate([
-            'username2' => 'required|file|mimes:xls,xlsx',
+            'houses' => 'required|file|mimes:xls,xlsx',
         ]);
-        Excel::import(new HousesImport, $request->file('username2'));
+        Excel::import(new HousesImport, $request->file('houses'));
         return redirect()->back()->with('success', 'Data imported successfully.');
     }
 

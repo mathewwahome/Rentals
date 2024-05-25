@@ -111,7 +111,11 @@
                                             <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
                                             <select name="house_no" class="form-control" required id="house_no">
                                                 @php
-                                                    $houses = App\Models\Houses::all();
+                                                    $houses = App\Models\Houses::whereNotIn('house_no', function (
+                                                        $query,
+                                                    ) {
+                                                        $query->select('house_no')->from('clients');
+                                                    })->get();
                                                 @endphp
                                                 @foreach ($houses as $house)
                                                     <option value="{{ $house->house_no }}">{{ $house->house_no }}
@@ -151,36 +155,6 @@
             });
         });
     </script>
-    {{-- <script>
-        const form = document.querySelector('form');
-
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const formData = new FormData(form);
-
-            const url = "{{ route('add-new-client') }}";
-
-            const options = {
-                method: 'POST',
-                body: formData
-            };
-
-            fetch(url, options)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    console.log(data);
-                })
-                .catch(error => {
-                    console.error('There was a problem with the fetch operation:', error);
-                });
-        });
-    </script> --}}
 </body>
 
 </html>

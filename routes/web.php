@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Authcontroller;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\HouseController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\NotificationsController;
@@ -62,3 +63,8 @@ Route::post('houses-importer', [HouseController::class, 'import'])->name('houses
 Route::get('single/house/{house}', [HouseController::class, 'singlehouse'])->name('single.house');
 //sms sending
 Route::get('sendSMS', [AfricasTalkingController::class, 'sendSMS'])->name('sendSMS');
+
+
+//generate excel sheet for a certain month
+Route::get('water-bills-template', [ExcelController::class, 'WaterTemplateDownload'])->name('water.bills.template');
+Route::post('water-bills-import', [ExcelController::class, 'WaterBillsimport'])->name('water.bills.import');

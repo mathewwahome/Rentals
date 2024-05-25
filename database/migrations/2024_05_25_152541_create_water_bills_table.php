@@ -11,13 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('houses', function (Blueprint $table) {
+        Schema::create('water_bills', function (Blueprint $table) {
             $table->id();
-            $table->string('house_no');
-            $table->string('rooms');
+            $table->date('date');
+            $table->string('month');
+            $table->string('no_clients');
             $table->string('status');
-            $table->integer('price');
-
+            $table->string('current_m_readings');
+            $table->string('previous_m_readings');
+            $table->string('total_m_readings');
+            $table->string('action')->default('send');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('houses');
+        Schema::dropIfExists('water_bills');
     }
 };

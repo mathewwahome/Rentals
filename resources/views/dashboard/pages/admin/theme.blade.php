@@ -69,6 +69,14 @@
                                         <small class="form-text text-muted">ex. Rentals</small>
                                     </div>
                                     <div class="form-group">
+                                        <label class=" form-control-label">Logo</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                            <input class="form-control" type="text" placeholder="logo link" name="logo" value="{{ isset($themeData['logo']) ? $themeData['logo'] : '' }}">
+                                        </div>
+                                        <small class="form-text text-muted">ex. https://path/to/logo.png</small>
+                                    </div>
+                                    <div class="form-group">
                                         <label class=" form-control-label">Contact Phone</label>
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-phone"></i></div>

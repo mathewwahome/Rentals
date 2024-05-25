@@ -13,6 +13,7 @@ class HousesImport implements ToModel, WithHeadingRow
             'house_no' => $row['house_no'],
             'rooms' => $row['rooms'],
             'status' => $row['status'],
+            'price' => $row['price'],
         ]);
     }
 }
