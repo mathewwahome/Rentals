@@ -140,7 +140,29 @@
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>{{ $client->client_name }}</h1>
+
+                                <div class="">
+                                    <div class="">
+                                        <div class="">
+                                            <div class="stat-widget-five">
+                                                <div class="stat-icon dib flat-color-1">
+                                                    <i class="pe-7s-user"></i>
+                                                </div>
+                                                <div class="stat-content">
+                                                    <div class="text-left dib">
+                                                        <div class="stat-text">
+                                                            <p>{{ $client->client_name }}</p>
+                                                        </div>
+                                                        <div class="stat-heading">
+                                                            <p>
+                                                                House No: {{ $client->house_no }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -161,10 +183,85 @@
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-1">
+                                        <i class="pe-7s-users"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text">nn</div>
+                                            <div class="stat-heading">Total Bills</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-3">
+                                        <i class="pe-7s-users"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text">nn</div>
+                                            <div class="stat-heading">Account Balance</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-4">
+                                        <i class="pe-7s-users"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">nn</span></div>
+                                            <div class="stat-heading">Pending Bills</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-2">
+                                        <i class="pe-7s-home"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">nn</span></div>
+                                            <div class="stat-heading">Over Due</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong class="card-title">Data Table</strong>
+                                <strong class="card-title">Rent Bills</strong>
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -175,20 +272,19 @@
                                             <th>Client Email</th>
                                             <th>Phone</th>
                                             <th>House No.</th>
+                                            <th>Payment Method</th>
                                             <th>Status.</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-
-
                                         <tr>
                                             <td>{{ $client->id }}</td>
                                             <td>{{ $client->client_name }}</td>
                                             <td>{{ $client->email }}</td>
                                             <td>{{ $client->phone }}</td>
                                             <td>{{ $client->house_no }}</td>
+                                            <td>{{ $client->house_no }}</td>
                                             <td>status</td>
-
                                         </tr>
                                     </tbody>
                                 </table>
@@ -281,45 +377,47 @@
                     <div class="col-lg-6">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title box-title">Live Chat</h4>
+                                <h4 class="card-title box-title">Tenant Messages</h4>
                                 <div class="card-content">
                                     <div class="messenger-box">
                                         <ul>
                                             <li>
-                                                <div class="msg-received msg-container">
-                                                    <div class="avatar">
-                                                       <img src="images/avatar/64-1.jpg" alt="">
-                                                       <div class="send-time">11.11 am</div>
-                                                    </div>
-                                                    <div class="msg-box">
-                                                        <div class="inner-box">
-                                                            <div class="name">
-                                                                John Doe
-                                                            </div>
-                                                            <div class="meg">
-                                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis sunt placeat velit ad reiciendis ipsam
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div><!-- /.msg-received -->
-                                            </li>
-                                            <li>
                                                 <div class="msg-sent msg-container">
                                                     <div class="avatar">
-                                                       <img src="images/avatar/64-2.jpg" alt="">
-                                                       <div class="send-time">11.11 am</div>
+                                                        <img src="images/avatar/64-2.jpg" alt="">
+                                                        <div class="send-time">11.11 am</div>
                                                     </div>
                                                     <div class="msg-box">
                                                         <div class="inner-box">
                                                             <div class="name">
-                                                                John Doe
+                                                                Tenant 
                                                             </div>
                                                             <div class="meg">
                                                                 Hay how are you doing?
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div><!-- /.msg-sent -->
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="msg-received msg-container">
+                                                    <div class="avatar">
+                                                        <img src="images/avatar/64-1.jpg" alt="">
+                                                        <div class="send-time">11.11 am</div>
+                                                    </div>
+                                                    <div class="msg-box">
+                                                        <div class="inner-box">
+                                                            <div class="name">
+                                                                Owner
+                                                            </div>
+                                                            <div class="meg">
+                                                                Lorem ipsum dolor sit amet, consectetur adipisicing
+                                                                elit. Perspiciatis sunt placeat velit ad reiciendis
+                                                                ipsam
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </li>
                                         </ul>
                                         <div class="send-mgs">
@@ -330,28 +428,59 @@
                                                 <i class="pe-7s-paper-plane"></i>
                                             </button>
                                         </div>
-                                    </div><!-- /.messenger-box -->
+                                    </div>
                                 </div>
-                            </div> <!-- /.card-body -->
-                        </div><!-- /.card -->
-                    </div>
-                    <div class="col-md-12">
-                        <div class="card-header">
-                            <strong class="card-title">Todo</strong>
-                        </div>
-                        <div class="card-body">
-                            <ol>
-                                <li>The last table should contain the total rent payed, water bills the balances
-                                </li>
-                                <li>Have a payment type on the full site
-                                </li>
-                                <li>Delete the client- should be moved to the bin by setting as inactive -to maintain the data for ft reference
-                                </li>
-                                <li>
-                                </li>
-                            </ol>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title box-title">Tenant Messages</h4>
+                                <div class="card-content">
+                                    <div class="messenger-box">
+                                        <ul>
+                                            <!-- Messages here -->
+                                        </ul>
+                                        <div class="send-mgs">
+                                            <div class="yourmsg">
+                                                <input id="messageInput" class="form-control" type="text">
+                                            </div>
+                                            <button onclick="sendMessage()" class="btn msg-send-btn">
+                                                <i class="pe-7s-paper-plane"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                    <script>
+                        function sendMessage() {
+                            var message = $('#messageInput').val();
+                            var recipient = '+568779979998';
+                    
+                            $.ajax({
+                                url: '/sendSMS',
+                                type: 'POST',
+                                headers: {
+                                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                                },
+                                data: {
+                                    recipient: recipient,
+                                    message: message
+                                },
+                                success: function(response) {
+                                    console.log('Message sent successfully:', response);
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error('Error sending message:', error);
+                                }
+                            });
+                        }
+                    </script>
                 </div>
             </div>
         </div>

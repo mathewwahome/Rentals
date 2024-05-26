@@ -53,7 +53,7 @@ Route::post('new-app-user', [Authcontroller::class, 'newappuser'])->name('new-ap
 Route::post('/add-new-client', [ClientController::class, 'store'])->name('add-new-client');
 
 //view a single client
-Route::get('/clients/{client}', [ClientController::class, 'singleclient'])->name('single.client');
+Route::get('/clients/{client}', [ClientController::class, 'clientedit'])->name('single.client');
 Route::post('/client/details', [ClientController::class, 'clientview'])->name('client.view');
 
 //houses
@@ -62,7 +62,7 @@ Route::post('houses-importer', [HouseController::class, 'import'])->name('houses
 //
 Route::get('single/house/{house}', [HouseController::class, 'singlehouse'])->name('single.house');
 //sms sending
-Route::get('sendSMS', [AfricasTalkingController::class, 'sendSMS'])->name('sendSMS');
+Route::post('sendSMS', [AfricasTalkingController::class, 'sendSMS'])->name('sendSMS');
 
 
 //generate excel sheet for a certain month

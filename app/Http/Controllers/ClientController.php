@@ -46,9 +46,9 @@ class ClientController extends Controller
         return view('dashboard.pages.client.single-client', compact('client'));
     }
 
-    public function singleclient($client)
+    public function clientedit($client)
     {
         $client = Clients::find($client);
-        return view('dashboard.pages.client.single-client',  compact('client'));
+        return view('dashboard.pages.client.client-edit',  compact('client'));
     }
 }
