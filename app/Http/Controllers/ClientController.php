@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Clients;
+use App\Models\Houses;
+use App\Models\RentBills;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -24,8 +26,19 @@ class ClientController extends Controller
         $client->id_number = $request->id;
         $client->house_no = $request->house_no;
         $client->entry_date = $request->entry_date;
-        $client->save();
-
+        $save = $client->save();
+        if ($save) {
+            $rentbill = new RentBills();
+            $rentbill->client_id =  $client->id;
+            $rent = Houses::where('house_no', $client->house_no)->value('price');
+            $rentbill->balance = -$rent;
+            $rentbill->previous_bill = 0;
+            $rentbill->unpaid_bill = $rent;
+            $rentbill->overdue_bill = 0;
+            $rentbill->payed_bill = 0;
+            $rentbill->total_bill = 0;
+            $rentbill->save();
+        }
         return redirect()->back();
     }
     public function viewclients()

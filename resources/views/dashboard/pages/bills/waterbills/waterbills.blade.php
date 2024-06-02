@@ -20,56 +20,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-    <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
 
-    <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
-
-    <style>
-        #weatherWidget .currentDesc {
-            color: #ffffff !important;
-        }
-
-        .traffic-chart {
-            min-height: 335px;
-        }
 
 
-
-
-
-
-        .chart-container {
-            display: table;
-            min-width: 270px;
-            text-align: left;
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-
-        /* #flotLine5 {
-            height: 105px;
-        } */
-    </style>
 </head>
 
 <body>
-    <!-- Left Panel -->
-    @include('layout.aside')
-    <!-- /#left-panel -->
+    @php
+        $previousbills = 2;
+        $currentbills = \App\Models\WaterBills::where('id', '1')->get();
+        $toatalbills =2;
+        $overduebills = 2;
+        // meater readings report
+        $total_m_readings = 2; //total units
 
-    <!-- Right Panel -->
+    @endphp
+
+    @include('layout.aside')
     <div id="right-panel" class="right-panel">
-        <!-- Header-->
         @include('layout.header')
-        <!-- /#header -->
-        <!-- Content -->
         <div class="content">
-            <!-- Animated -->
             <div class="animated fadeIn">
-                <!-- Widgets  -->
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
@@ -80,7 +52,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text">$<span class="count">23569</span></div>
+                                            <div class="stat-text">sh {{ $toatalbills }}</div>
                                             <div class="stat-heading">Total Bills</div>
                                         </div>
                                     </div>
@@ -94,7 +66,7 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-2">
-                                        <i class="pe-7s-cart"></i>
+                                        <i class="pe-7s-cash"></i>
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
@@ -112,7 +84,7 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-3">
-                                        <i class="pe-7s-browser"></i>
+                                        <i class="pe-7s-cash"></i>
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
@@ -130,7 +102,7 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-4">
-                                        <i class="pe-7s-users"></i>
+                                        <i class="pe-7s-cash"></i>
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
@@ -143,15 +115,68 @@
                         </div>
                     </div>
                 </div>
-                <!-- /Widgets -->
-               
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-1">
+                                        <i class="pe-7s-cash"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text">{{ $total_m_readings }}</div>
+                                            <div class="stat-heading">Total Units</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-2">
+                                        <i class="pe-7s-cash"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">3435</span></div>
+                                            <div class="stat-heading">Payed Units</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-3">
+                                        <i class="pe-7s-cash"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">349</span></div>
+                                            <div class="stat-heading">Unpayed Units</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="clearfix"></div>
                 <div class="orders">
                     <div class="row">
                         <div class="col-xl-8">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="box-title">This Month Bills</h4>
+                                    <h4 class="box-title">Monthly Water Units Report</h4>
                                 </div>
                                 <div class="card-body--">
                                     <div class="table-stats order-table ov-h">
@@ -240,85 +265,104 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                <div class="col-lg-6 col-xl-12">
+                                    <div class="card br-0">
+                                        <div class="card-body">
+                                            <h4>Update specific Water Tenant Bill</h4>
+                                            <div class="form  mt-4">
+                                                @php
+                                                    $clients = \App\Models\Clients::all();
+                                                @endphp
 
-                <div class="row">
-                    <div class="col-md-12 col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="calender-cont widget-calender">
-                                    <div id="calendar"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                                                <form action="{{ route('water.single.payment') }}" method="POST"
+                                                    enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="form-group">
+                                                        <label for="client_name">Client Name</label>
+                                                        <select name="client_id" class="form-control"
+                                                            id="client_name">
+                                                            @foreach ($clients as $client)
+                                                                <option value="{{ $client->id }}">
+                                                                    {{ $client->client_name }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="house_no">House Number</label>
+                                                        <select name="house_no" class="form-control" id="house_no">
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="amount">Amount Paid</label>
+                                                        <input type="number" class="form-control" name="amount"
+                                                            placeholder="Amount" id="amount" min="1">
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="amount">Payment Date</label>
+                                                        <input type="date" class="form-control"
+                                                            name="payment_date" id="payment_date">
+                                                    </div>
+                                                    <button type="submit" class="btn btn-success">Update</button>
+                                                </form>
+                                                <script>
+                                                    document.addEventListener("DOMContentLoaded", function() {
+                                                        // Trigger change event on client select element
+                                                        document.getElementById('client_name').dispatchEvent(new Event('change'));
+                                                    });
+
+                                                    // Rest of your JavaScript code here
+                                                    document.getElementById('client_name').addEventListener('change', function() {
+                                                        var clientId = this.value;
+                                                        fetch('/get-houses/' + clientId)
+                                                            .then(response => response.json())
+                                                            .then(data => {
+                                                                var houseSelect = document.getElementById('house_no');
+                                                                houseSelect.innerHTML = '';
+                                                                data.forEach(function(house) {
+                                                                    var option = document.createElement('option');
+                                                                    option.text = house.house_no;
+                                                                    option.value = house.house_no;
+                                                                    houseSelect.appendChild(option);
+                                                                });
+                                                            });
+                                                    });
+
+                                                    document.getElementById('house_no').addEventListener('change', function() {
+                                                        var houseNo = this.value;
+                                                        axios.get('/get-client/' + houseNo)
+                                                            .then(response => {
+                                                                document.getElementById('client_name').value = response.data.client_name;
+                                                            })
+                                                            .catch(error => {
+                                                                console.error('Error fetching client name:', error);
+                                                            });
+                                                    });
+                                                </script>
 
 
 
-                </div>
-
-                <!-- Modal - Calendar - Add New Event -->
-                <div class="modal fade none-border" id="event-modal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"
-                                    aria-hidden="true">&times;</button>
-                                <h4 class="modal-title"><strong>Add New Event</strong></h4>
-                            </div>
-                            <div class="modal-body"></div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default waves-effect"
-                                    data-dismiss="modal">Close</button>
-                                <button type="button"
-                                    class="btn btn-success save-event waves-effect waves-light">Create event</button>
-                                <button type="button" class="btn btn-danger delete-event waves-effect waves-light"
-                                    data-dismiss="modal">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /#event-modal -->
-                <!-- Modal - Calendar - Add Category -->
-                <div class="modal fade none-border" id="add-category">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"
-                                    aria-hidden="true">&times;</button>
-                                <h4 class="modal-title"><strong>Add a category </strong></h4>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label class="control-label">Category Name</label>
-                                            <input class="form-control form-white" placeholder="Enter name"
-                                                type="text" name="category-name" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="control-label">Choose Category Color</label>
-                                            <select class="form-control form-white"
-                                                data-placeholder="Choose a color..." name="category-color">
-                                                <option value="success">Success</option>
-                                                <option value="danger">Danger</option>
-                                                <option value="info">Info</option>
-                                                <option value="pink">Pink</option>
-                                                <option value="primary">Primary</option>
-                                                <option value="warning">Warning</option>
-                                            </select>
+                                                {{--     
+                                                <script>
+                                                    document.getElementById('client_name').addEventListener('change', function() {
+                                                        var clientId = this.value;
+                                                        fetch('/get-houses/' + clientId)
+                                                            .then(response => response.json())
+                                                            .then(data => {
+                                                                var houseSelect = document.getElementById('house_no');
+                                                                houseSelect.innerHTML = '';
+                                                                data.forEach(function(house) {
+                                                                    var option = document.createElement('option');
+                                                                    option.text = house.house_no;
+                                                                    option.value = house.house_no;
+                                                                    houseSelect.appendChild(option);
+                                                                });
+                                                            });
+                                                    });
+                                                </script> --}}
+                                            </div>
                                         </div>
                                     </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default waves-effect"
-                                    data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-danger waves-effect waves-light save-category"
-                                    data-dismiss="modal">Save</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -327,9 +371,7 @@
         </div>
         <div class="clearfix"></div>
         @include('layout.footer')
-        <!-- /.site-footer -->
     </div>
-    <!-- /#right-panel -->
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
@@ -353,10 +395,8 @@
     <script src="assets/js/init/weather-init.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
-    <script src="assets/js/init/fullcalendar-init.js"></script>
 
-   
+
 </body>
 
 </html>

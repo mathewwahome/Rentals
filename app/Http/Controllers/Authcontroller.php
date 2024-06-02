@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\WebUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class Authcontroller extends Controller
 {
@@ -37,11 +38,21 @@ class Authcontroller extends Controller
 
         $webuser->name = $request->username;
         $webuser->email = $request->email;
-        $webuser->password = $request->password;
+        $webuser->password = Hash::make($request->password);
         // verify to makesure that the 2 passowords match
         $saved = $webuser->save();
         if ($saved) {
             return redirect()->back();
         }
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 }

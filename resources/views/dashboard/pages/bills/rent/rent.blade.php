@@ -20,56 +20,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-    <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet">
-
-    <link href="https://cdn.jsdelivr.net/npm/weathericons@2.1.0/css/weather-icons.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
-
-    <style>
-        #weatherWidget .currentDesc {
-            color: #ffffff !important;
-        }
-
-        .traffic-chart {
-            min-height: 335px;
-        }
+    <link rel="stylesheet" href="assets/css/lib/datatable/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/lib/datatable/dataTables.bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
 
 
-
-
-
-        .chart-container {
-            display: table;
-            min-width: 270px;
-            text-align: left;
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-
-        /* #flotLine5 {
-            height: 105px;
-        } */
-    </style>
 </head>
 
 <body>
-    <!-- Left Panel -->
-    @include('layout.aside')
-    <!-- /#left-panel -->
+    @php
+        $totalbill = \App\Models\RentBills::sum('total_bill');
+        $unpaid_bill = \App\Models\RentBills::sum('unpaid_bill');
+        $overdue_bill = \App\Models\RentBills::sum('overdue_bill');
+        $payed_bill = \App\Models\RentBills::sum('payed_bill');
+        $overdue_bill = \App\Models\RentBills::sum('overdue_bill');
+        $bills = \App\Models\RentBills::all();
+    @endphp
 
-    <!-- Right Panel -->
+    @include('layout.aside')
+
     <div id="right-panel" class="right-panel">
-        <!-- Header-->
         @include('layout.header')
-        <!-- /#header -->
-        <!-- Content -->
+
         <div class="content">
-            <!-- Animated -->
             <div class="animated fadeIn">
-                <!-- Widgets  -->
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
@@ -80,8 +56,8 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text">$<span class="count">23569</span></div>
-                                            <div class="stat-heading">Total Bills</div>
+                                            <div class="stat-text">Ksh {{ $totalbill }}</div>
+                                            <div class="stat-heading">Total Bill</div>
                                         </div>
                                     </div>
                                 </div>
@@ -94,11 +70,11 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-2">
-                                        <i class="pe-7s-cart"></i>
+                                        <i class="pe-7s-cash"></i>
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">3435</span></div>
+                                            <div class="stat-text">{{ $payed_bill }}</div>
                                             <div class="stat-heading">Payed</div>
                                         </div>
                                     </div>
@@ -112,12 +88,12 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-3">
-                                        <i class="pe-7s-browser"></i>
+                                        <i class="pe-7s-cash"></i>
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">349</span></div>
-                                            <div class="stat-heading">Pending</div>
+                                            <div class="stat-text"><span class="count">{{ $unpaid_bill }}</span></div>
+                                            <div class="stat-heading">Unpayed Bills</div>
                                         </div>
                                     </div>
                                 </div>
@@ -130,11 +106,11 @@
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-4">
-                                        <i class="pe-7s-users"></i>
+                                        <i class="pe-7s-cash"></i>
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">2986</span></div>
+                                            <div class="stat-text">{{ $overdue_bill }}</div>
                                             <div class="stat-heading">Overdue</div>
                                         </div>
                                     </div>
@@ -143,262 +119,142 @@
                         </div>
                     </div>
                 </div>
-               
+
                 <div class="clearfix"></div>
-                <div class="orders">
-                    <div class="row">
-                        <div class="col-xl-8">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="box-title">This Month Bills</h4>
-                                </div>
-                                <div class="card-body--">
-                                    <div class="table-stats order-table ov-h">
-                                        <table class="table ">
-                                            <thead>
-                                                <tr>
-                                                    <th class="serial">ID</th>
-                                                    <th>Date</th>
-                                                    <th>Month</th>
-                                                    <th>NO. Clients</th>
-                                                    <th>Status</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @php
-                                                    $waterbills = App\Models\WaterBills::all();
-                                                @endphp
-                                                @foreach ($waterbills as $waterbill)
-                                                    <tr class=" pb-0">
-                                                        <td class="serial">{{ $waterbill->id }}</td>
-                                                        <td> {{ $waterbill->date }} </td>
-                                                        <td> <span class="name">{{ $waterbill->month }}</span> </td>
-                                                        <td><span class="count">{{ $waterbill->no_clients }}</span>
-                                                        </td>
-                                                        <td>
-                                                            <span
-                                                                class="badge badge-complete">{{ $waterbill->status }}</span>
-                                                        </td>
-                                                        <td>
-                                                            <span
-                                                                class="badge badge-complete">{{ $waterbill->action }}</span>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
 
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4">
-                            <div class="row">
-                                <div class="col-lg-6 col-xl-12">
-                                    <div class="card br-0">
-                                        <div class="card-body">
-                                            <p>Upload this months meter readings</p>
-                                            <p>one should only be allowed to upload the meter readings for a particular
-                                                month then close the upload ability ---for every month provide an excel
-                                                template for the available clients---</p>
-                                            <a href="{{ route('water.bills.template') }}"
-                                                class="btn btn-success">Download Template</a>
-                                            <hr>
-                                            <div class="form  mt-4">
-                                                <form action="{{ route('water.bills.import') }}" method="POST"
-                                                    enctype="multipart/form-data">
-                                                    @csrf
-                                                    <div class="form-group">
-                                                        <label for="meter_readings">Meter Readings:</label>
-                                                        <input type="file" name="meter_readings" required
-                                                            class="form-control">
-                                                        <p>This sholud be the filled excel</p>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-success">Upload</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-xl-12">
-                                    <div class="card br-0">
-                                        <div class="card-body">
-                                            <p>generate this months report if not generated</p>
-                                            <p>This button should only be visible only if the excel has been uploded</p>
-                                            <button class="btn btn-success">Generate</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6 col-xl-12">
-                                    <div class="card br-0">
-                                        <div class="card-body">
-                                            <p>After the generation of bills one can nowv send Sms To all the clients to
-                                                notify them about the bills</p>
-                                            <button class="btn btn-success">Send Bills</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="orders">
-                    <div class="row">
-                        <div class="col-xl-8">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="box-title">This Month Bills</h4>
-                                </div>
-                                <div class="card-body--">
-                                    <div class="table-stats order-table ov-h">
-                                        <table class="table ">
-                                            <thead>
-                                                <tr>
-                                                    <th class="serial">ID</th>
-                                                    <th>Date</th>
-                                                    <th>Month</th>
-                                                    <th>NO. Clients</th>
-                                                    <th>Status</th>
-                                                    <th>Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @php
-                                                    $waterbills = App\Models\WaterBills::all();
-                                                @endphp
-                                                @foreach ($waterbills as $waterbill)
-                                                    <tr class=" pb-0">
-                                                        <td class="serial">{{ $waterbill->id }}</td>
-                                                        <td> {{ $waterbill->date }} </td>
-                                                        <td> <span class="name">{{ $waterbill->month }}</span> </td>
-                                                        <td><span class="count">{{ $waterbill->no_clients }}</span>
-                                                        </td>
-                                                        <td>
-                                                            <span
-                                                                class="badge badge-complete">{{ $waterbill->status }}</span>
-                                                        </td>
-                                                        <td>
-                                                            <span
-                                                                class="badge badge-complete">{{ $waterbill->action }}</span>
-                                                        </td>
-                                                    </tr>
-                                                @endforeach
-
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-4">
-                            <div class="row">
-                                <div class="col-lg-6 col-xl-12">
-                                    <div class="card br-0">
-                                        <div class="card-body">
-                                            <p>For one to pay rent generate the template for all the vlients for them to be able to update the payments end month</p>
-                                            <a href="{{ route('water.bills.template') }}"
-                                                class="btn btn-success">Download Template</a>
-                                            <hr>
-                                            <div class="form  mt-4">
-                                                <form action="{{ route('water.bills.import') }}" method="POST"
-                                                    enctype="multipart/form-data">
-                                                    @csrf
-                                                    <div class="form-group">
-                                                        <label for="meter_readings">Meter Readings:</label>
-                                                        <input type="file" name="meter_readings" required
-                                                            class="form-control">
-                                                        <p>This should be the filled excel</p>
-                                                    </div>
-                                                    <button type="submit" class="btn btn-success">Upload</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                               
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
-                    <div class="col-md-12 col-lg-12">
+                    <div class="col-md-8">
                         <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Clients Table</strong>
+                            </div>
                             <div class="card-body">
-                                <div class="calender-cont widget-calender">
-                                    <div id="calendar"></div>
+                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Client Name</th>
+                                            <th>Balance</th>
+                                            <th>Previous </th>
+                                            <th>Unpayed</th>
+                                            <th>OverDue</th>
+                                            <th>Payed.</th>
+                                            <th>Total</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach ($bills as $bill)
+                                            <tr>
+                                                <td>{{ $bill->id }}</td>
+                                                <td>{{ \App\Models\Clients::where('id', $bill->client_id)->value('client_name') }}</td>
+                                                <td>{{ $bill->balance }}</td>
+                                                <td>{{ $bill->previous_bill }}</td>
+                                                <td>{{ $bill->unpaid_bill }}</td>
+                                                <td>{{ $bill->overdue_bill }}</td>
+                                                <td>{{ $bill->payed_bill }}</td>
+                                                <td>{{ $bill->total_bill }}</td>
+                                                <td>
+                                                    <div class="row ml-2">
+                                                        <form action="{{ route('client.view') }}" method="POST">
+                                                            @csrf
+                                                            <input type="hidden" name="client_id"
+                                                                value="{{ $bill->id }}">
+                                                            <button class="btn btn-success" type="submit"><i
+                                                                    class="ti ti-book"></i></button>
+                                                        </form>
+                                                        <a class="btn btn-secondary ml-2"
+                                                            href="{{ route('single.client', ['client' => $bill->id]) }}"><i
+                                                                class="fa fa-pencil"></i></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4">
+                        <div class="row">
+                            <div class="col-lg-6 col-xl-12">
+                                <div class="card br-0">
+                                    <div class="card-body">
+                                        <h3>Update a specific Tenant Bill</h3>
+                                        <div class="form  mt-4">
+                                            @php
+                                                $clients = \App\Models\Clients::all();
+                                            @endphp
+
+                                            <form action="{{ route('month.rent.bill') }}" method="POST"
+                                                enctype="multipart/form-data">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <label for="client_name">Client Name</label>
+                                                    <select name="client_id" class="form-control" id="client_name">
+                                                        @foreach ($clients as $client)
+                                                            <option value="{{ $client->id }}">
+                                                                {{ $client->client_name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="house_no">House Number</label>
+                                                    <select name="house_no" class="form-control" id="house_no">
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="amount">Amount Paid</label>
+                                                    <input type="number" class="form-control" name="amount"
+                                                        placeholder="Amount" id="amount" min="1">
+                                                </div>
+                                                <button type="submit" class="btn btn-success">Update</button>
+                                            </form>
+
+                                            <script>
+                                                document.getElementById('client_name').addEventListener('change', function() {
+                                                    var clientId = this.value;
+                                                    fetch('/get-houses/' + clientId)
+                                                        .then(response => response.json())
+                                                        .then(data => {
+                                                            var houseSelect = document.getElementById('house_no');
+                                                            houseSelect.innerHTML = '';
+                                                            data.forEach(function(house) {
+                                                                var option = document.createElement('option');
+                                                                option.text = house.house_no;
+                                                                option.value = house.house_no;
+                                                                houseSelect.appendChild(option);
+                                                            });
+                                                        });
+                                                });
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-xl-12">
+                                <div class="card br-0">
+                                    <div class="card-body">
+                                        <p>generate Rent bills for this month</p>
+                                        <button class="btn btn-success">Generate</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-xl-12">
+                                <div class="card br-0">
+                                    <div class="card-body">
+                                        <p>After the generation of bills one can nowv send Sms To all the clients to
+                                            notify them about the bills</p>
+                                        <button class="btn btn-success">Send Bills</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-
                 </div>
 
-                <!-- Modal - Calendar - Add New Event -->
-                <div class="modal fade none-border" id="event-modal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"
-                                    aria-hidden="true">&times;</button>
-                                <h4 class="modal-title"><strong>Add New Event</strong></h4>
-                            </div>
-                            <div class="modal-body"></div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default waves-effect"
-                                    data-dismiss="modal">Close</button>
-                                <button type="button"
-                                    class="btn btn-success save-event waves-effect waves-light">Create event</button>
-                                <button type="button" class="btn btn-danger delete-event waves-effect waves-light"
-                                    data-dismiss="modal">Delete</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /#event-modal -->
-                <!-- Modal - Calendar - Add Category -->
-                <div class="modal fade none-border" id="add-category">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"
-                                    aria-hidden="true">&times;</button>
-                                <h4 class="modal-title"><strong>Add a category </strong></h4>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <label class="control-label">Category Name</label>
-                                            <input class="form-control form-white" placeholder="Enter name"
-                                                type="text" name="category-name" />
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label class="control-label">Choose Category Color</label>
-                                            <select class="form-control form-white"
-                                                data-placeholder="Choose a color..." name="category-color">
-                                                <option value="success">Success</option>
-                                                <option value="danger">Danger</option>
-                                                <option value="info">Info</option>
-                                                <option value="pink">Pink</option>
-                                                <option value="primary">Primary</option>
-                                                <option value="warning">Warning</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default waves-effect"
-                                    data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-danger waves-effect waves-light save-category"
-                                    data-dismiss="modal">Save</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </div>
         <div class="clearfix"></div>
@@ -409,26 +265,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
     <script src="assets/js/main.js"></script>
-
-    <!--  Chart js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.bundle.min.js"></script>
-
-    <!--Chartist Chart-->
-    <script src="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartist-plugin-legend@0.6.2/chartist-plugin-legend.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/jquery.flot@0.8.3/jquery.flot.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flot-pie@1.0.0/src/jquery.flot.pie.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flot-spline@0.0.1/js/jquery.flot.spline.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/simpleweather@3.1.0/jquery.simpleWeather.min.js"></script>
-    <script src="assets/js/init/weather-init.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
-    <script src="assets/js/init/fullcalendar-init.js"></script>
-
-   
+    <script src="assets/js/lib/data-table/datatables.min.js"></script>
+    <script src="assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
+    <script src="assets/js/lib/data-table/dataTables.buttons.min.js"></script>
+    <script src="assets/js/lib/data-table/buttons.bootstrap.min.js"></script>
+    <script src="assets/js/lib/data-table/jszip.min.js"></script>
+    <script src="assets/js/lib/data-table/vfs_fonts.js"></script>
+    <script src="assets/js/lib/data-table/buttons.html5.min.js"></script>
+    <script src="assets/js/lib/data-table/buttons.print.min.js"></script>
+    <script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
+    <script src="assets/js/init/datatables-init.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#bootstrap-data-table-export').DataTable();
+        });
+    </script>
 </body>
 
 </html>

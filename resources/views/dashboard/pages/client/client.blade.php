@@ -28,7 +28,13 @@
 
 <body>
     @include('layout.aside')
-
+    @php
+        $webusers = App\Models\WebUsers::count();
+        $appusers = App\Models\WebUsers::count();
+        $t_houses = App\Models\Houses::count();
+        $t_clients = App\Models\Clients::count();
+        $clients = App\Models\Clients::all();
+    @endphp
     <div id="right-panel" class="right-panel">
         @include('layout.header')
         <div class="breadcrumbs">
@@ -67,7 +73,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">nn</span></div>
+                                            <div class="stat-text"><span class="count">{{$webusers}}</span></div>
                                             <div class="stat-heading">Web Users</div>
                                         </div>
                                     </div>
@@ -75,9 +81,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
@@ -87,7 +90,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">nn</span></div>
+                                            <div class="stat-text"><span class="count">{{$appusers}}</span></div>
                                             <div class="stat-heading">App Users</div>
                                         </div>
                                     </div>
@@ -95,7 +98,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
@@ -105,7 +107,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">nn</span></div>
+                                            <div class="stat-text"><span class="count">{{$t_clients}}</span></div>
                                             <div class="stat-heading">Total Clients</div>
                                         </div>
                                     </div>
@@ -122,7 +124,7 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">nn</span></div>
+                                            <div class="stat-text"><span class="count">{{$t_houses}}</span></div>
                                             <div class="stat-heading">Total Houses</div>
                                         </div>
                                     </div>
@@ -131,9 +133,7 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
-
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
@@ -153,9 +153,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @php
-                                            $clients = App\Models\Clients::all();
-                                        @endphp
+
                                         @foreach ($clients as $client)
                                             <tr>
                                                 <td>{{ $client->id }}</td>
@@ -170,10 +168,12 @@
                                                             @csrf
                                                             <input type="hidden" name="client_id"
                                                                 value="{{ $client->id }}">
-                                                            <button class="btn btn-success" type="submit"><i class="ti ti-book"></i></button>
+                                                            <button class="btn btn-success" type="submit"><i
+                                                                    class="ti ti-book"></i></button>
                                                         </form>
                                                         <a class="btn btn-secondary ml-2"
-                                                            href="{{ route('single.client', ['client' => $client->id]) }}"><i class="fa fa-pencil"></i></a>
+                                                            href="{{ route('single.client', ['client' => $client->id]) }}"><i
+                                                                class="fa fa-pencil"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>

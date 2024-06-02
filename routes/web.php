@@ -10,14 +10,26 @@ use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\HouseController;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\NotificationsController;
+use App\Http\Controllers\RentController;
 use App\Http\Controllers\ThemeController;
+use App\Http\Controllers\WaterMeterReadingsController;
 
 Route::get('/', function () {
     return redirect()->route('login');
 });
 Route::get('/login', [Authcontroller::class, 'login'])->name('login');
 Route::post('/user-login', [Authcontroller::class, 'userlogin'])->name('user.login');
-Route::get('/dashboard', [Homecontroller::class, 'dashboard'])->name('dashboard'); //->middleware('auth.web_user')
+Route::post('/logout', [Authcontroller::class, 'logout'])->name('logout');
+
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+});
+
+
+
+
 Route::get('view-clients', [ClientController::class, 'viewclients'])->name('viewclients');
 Route::get('new-clients', [ClientController::class, 'newclients'])->name('newclients');
 Route::get('water-bills', [Homecontroller::class, 'waterbills'])->name('water-bills');
@@ -65,6 +77,18 @@ Route::get('single/house/{house}', [HouseController::class, 'singlehouse'])->nam
 Route::post('sendSMS', [AfricasTalkingController::class, 'sendSMS'])->name('sendSMS');
 
 
+
+// month.rent.bill
+Route::post('month.rent.bill', [RentController::class, 'MonthlyRentBill'])->name('month.rent.bill');
+
 //generate excel sheet for a certain month
 Route::get('water-bills-template', [ExcelController::class, 'WaterTemplateDownload'])->name('water.bills.template');
 Route::post('water-bills-import', [ExcelController::class, 'WaterBillsimport'])->name('water.bills.import');
+
+//month.water.bill
+Route::post('water.single.payment', [WaterMeterReadingsController::class, 'singlePayment'])->name('water.single.payment');
+Route::post('water.bulk.payment', [WaterMeterReadingsController::class, 'bulkPayment'])->name('water.bulk.payment');
+
+//get house api
+Route::get('get-houses/{clientId}', [HouseController::class, 'getHousesByClientId'])->name('get-house');
+Route::get('/get-client/{houseNo}', [HouseController::class, 'getClientNameByHouse']);

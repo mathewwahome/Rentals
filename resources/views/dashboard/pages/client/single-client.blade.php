@@ -384,7 +384,7 @@
                                             <li>
                                                 <div class="msg-sent msg-container">
                                                     <div class="avatar">
-                                                        <img src="images/avatar/64-2.jpg" alt="">
+                                                        <img src="images/user/default.png" alt="">
                                                         <div class="send-time">11.11 am</div>
                                                     </div>
                                                     <div class="msg-box">

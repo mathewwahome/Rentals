@@ -43,7 +43,7 @@
         $appusers = App\Models\WebUsers::count();
         $t_houses = App\Models\Houses::count();
         $t_clients = App\Models\Clients::count();
-        $clients = App\Models\Clients::all();
+        $latestclients = App\Models\Clients::take(5)->get();
     @endphp
     @include('layout.aside')
     <div id="right-panel" class="right-panel">
@@ -148,20 +148,29 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($clients as $client)
+                                                @foreach ($latestclients as $latestclient)
                                                     <tr>
-                                                        <td class="serial">{{ $client->id }}</td>
+                                                        <td class="serial">{{ $latestclient->id }}</td>
                                                         <td class="avatar">
                                                             <div class="round-img">
                                                                 <a href="#"><img class="rounded-circle"
-                                                                        src="images/avatar/1.jpg" alt=""></a>
+                                                                        src="images/user/default.png" alt=""></a>
                                                             </div>
                                                         </td>
-                                                        <td> {{ $client->client_name }} </td>
-                                                        <td> {{ $client->email }} </td>
-                                                        <td><span class="count">{{ $client->phone }}</span></td>
+                                                        <td> {{ $latestclient->client_name }} </td>
+                                                        <td> {{ $latestclient->email }} </td>
+                                                        <td><span class="count">{{ $latestclient->phone }}</span></td>
                                                         <td>
-                                                            <span class="badge badge-complete">Complete</span>
+                                                            <div class="row ml-2">
+                                                                <form action="{{ route('client.view') }}" method="POST">
+                                                                    @csrf
+                                                                    <input type="hidden" name="client_id"
+                                                                        value="{{ $latestclient->id }}">
+                                                                    <button class="btn btn-success" type="submit"><i class="ti ti-book"></i></button>
+                                                                </form>
+                                                                <a class="btn btn-secondary ml-2"
+                                                                    href="{{ route('single.client', ['client' => $latestclient->id]) }}"><i class="fa fa-pencil"></i></a>
+                                                            </div>
                                                         </td>
                                                     </tr>
                                                 @endforeach
@@ -170,10 +179,10 @@
 
                                             </tbody>
                                         </table>
-                                    </div> <!-- /.table-stats -->
+                                    </div>
                                 </div>
-                            </div> <!-- /.card -->
-                        </div> <!-- /.col-lg-8 -->
+                            </div> 
+                        </div> 
 
 
                     </div>

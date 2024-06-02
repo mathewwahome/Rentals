@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('water_bills', function (Blueprint $table) {
+        Schema::create('rent_bills', function (Blueprint $table) {
             $table->id();
-            $table->date('payment_date');
-            $table->string('amount');
-            $table->string('house_no');
             $table->string('client_id');
+            $table->string('balance');
+            $table->string('previous_bill');
+            $table->string('unpaid_bill');
+            $table->string('overdue_bill');
+            $table->string('payed_bill');
+            $table->string('total_bill');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('water_bills');
+        Schema::dropIfExists('rent_bills');
     }
 };

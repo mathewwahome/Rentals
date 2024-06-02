@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\Models\WaterBills;
+use App\Models\WaterMeterReadings;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Carbon\Carbon;
@@ -11,7 +11,7 @@ class WaterBillsReadings implements ToModel,  WithHeadingRow
   
     public function model(array $row)
     {
-        return new WaterBills([
+        return new WaterMeterReadings([
             'month' => $row['id'],
             'no_clients' => $row['id'],
             'status' => $row['id'],
