@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('id_number');
             $table->string('house_no');
             $table->string('entry_date');
+            $table->string('status')->default('active');
             $table->timestamps();
         });
     }

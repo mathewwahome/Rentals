@@ -9,8 +9,8 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\HouseController;
 use App\Http\Controllers\MessagesController;
-use App\Http\Controllers\NotificationsController;
 use App\Http\Controllers\RentController;
+use App\Http\Controllers\ReportGenerator;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\WaterMeterReadingsController;
 
@@ -23,9 +23,9 @@ Route::post('/logout', [Authcontroller::class, 'logout'])->name('logout');
 
 
 
-Route::middleware(['auth'])->group(function () {
+// Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
-});
+// });
 
 
 
@@ -92,3 +92,8 @@ Route::post('water.bulk.payment', [WaterMeterReadingsController::class, 'bulkPay
 //get house api
 Route::get('get-houses/{clientId}', [HouseController::class, 'getHousesByClientId'])->name('get-house');
 Route::get('/get-client/{houseNo}', [HouseController::class, 'getClientNameByHouse']);
+
+
+//report generation
+Route::post('/client-report-generation', [ReportGenerator::class, 'generateClientReport']);
+Route::post('/houses-report-generation', [ReportGenerator::class, 'generateHousesReport']);

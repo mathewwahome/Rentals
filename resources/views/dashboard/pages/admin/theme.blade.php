@@ -57,7 +57,7 @@
                         <div class="col-xs-6 col-sm-6">
                             <div class="card">
                                 <div class="card-header">
-                                    <strong>Masked Input</strong> <small> Small Text Mask</small>
+                                    <strong>Site Theme</strong>
                                 </div>
                                 <div class="card-body card-block">
                                     <div class="form-group">
