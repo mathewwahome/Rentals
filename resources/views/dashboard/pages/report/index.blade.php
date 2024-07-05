@@ -3,7 +3,7 @@
 <html class="no-js" lang="">
 
 <head>
-@include('layout.head')
+    @include('layout.head')
 
 </head>
 
@@ -34,277 +34,351 @@
         <section class="section dashboard">
             <div class="row">
 
+
+
                 <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-3">
-                                    <i class="pe-7s-users"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{ $reports }}</span></div>
-                                        <div class="stat-heading">Total Report</div>
+                    <div class="info-card sales-card ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-file-earmark-text"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ $reports }}</h6>
+                                        <span class="text-muted small pt-2 ps-1">Total Report</span>
+
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-header text-center bg-info">
-                            <a class="text-light" href="{{ route('single_report', ['report' => 'client']) }}"><i class="fa fa-arrow-right">More Info</i></a>
+                            <div class="card-header text-center bg-success">
+                                <a class="text-light" href="{{ route('single_report', ['report' => 'client']) }}">More Info<i class="bi bi-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
+
                 <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-3">
-                                    <i class="pe-7s-users"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{ $clients }}</span></div>
-                                        <div class="stat-heading">Clients Report</div>
+                    <div class="info-card sales-card ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ $clients }}</h6>
+                                        <span class="text-muted small pt-2 ps-1">Client Report</span>
+
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-header text-center bg-info">
-                            <a class="text-light" href="{{ route('single_report', ['report' => 'client']) }}"><i class="fa fa-arrow-right">More Info</i></a>
+                            <div class="card-header text-center bg-success">
+                                <a class="text-light" href="{{ route('single_report', ['report' => 'client']) }}">More Info<i class="bi bi-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
+
+
                 <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-1">
-                                    <i class="pe-7s-home"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{ $houses }}</span></div>
-                                        <div class="stat-heading">Houses</div>
+                    <div class="info-card sales-card ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-house"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ $houses }}</h6>
+                                        <span class="text-muted small pt-2 ps-1">Houses Report</span>
+
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-header text-center bg-info">
-                            <a class="text-light" href="{{ route('single_report', ['report' => 'houses']) }}"><i class="fa fa-arrow-right">More Info </i></a>
+                            <div class="card-header text-center bg-success">
+                                <a class="text-light" href="{{ route('single_report', ['report' => 'houses']) }}">More Info<i class="bi bi-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
+
+
                 <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-4">
-                                    <i class="pe-7s-users"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{ $users }}</span></div>
-                                        <div class="stat-heading">Users</div>
+                    <div class="info-card sales-card ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ $users }}</h6>
+                                        <span class="text-muted small pt-2 ps-1">Users Report</span>
+
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-header text-center bg-info">
-                            <a class="text-light" href="{{ route('single_report', ['report' => 'users']) }}"><i class="fa fa-arrow-right">More Info </i></a>
+                            <div class="card-header text-center bg-success">
+                                <a class="text-light" href="{{ route('single_report', ['report' => 'users']) }}">More Info<i class="bi bi-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+
                 <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-2">
-                                    <i class="pe-7s-home"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{ $water_bills }}</span></div>
-                                        <div class="stat-heading">Water Bills</div>
+                    <div class="info-card sales-card ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-water"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ $water_bills }}</h6>
+                                        <span class="text-muted small pt-2 ps-1">Water Bills</span>
+
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-header text-center bg-info">
-                            <a class="text-light" href="{{ route('single_report', ['report' => 'water bills']) }}"><i class="fa fa-arrow-right">More Info </i></a>
+                            <div class="card-header text-center bg-success">
+                                <a class="text-light" href="{{ route('single_report', ['report' => 'water bills']) }}">More Info<i class="bi bi-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-2">
-                                    <i class="pe-7s-home"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{ $rent }}</span></div>
-                                        <div class="stat-heading">Rent</div>
+                    <div class="info-card customers-card">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-cash"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ $rent }}</h6>
+                                        <span class="text-muted small pt-2 ps-1">Rent</span>
+
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-header text-center bg-info">
-                            <a class="text-light" href="{{ route('single_report', ['report' => 'rent']) }}"><i class="fa fa-arrow-right">More Info </i></a>
+                            <div class="card-header text-center bg-success">
+                                <a class="text-light" href="{{ route('single_report', ['report' => 'rent']) }}">More Info<i class="bi bi-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <p>Create a table to display all the available reports then one can select the report they want to generate</p>
-            <p>Create report types for generation</p>
-            <p>Create report graph for all the generated reports</p>
-            <p>dispal filtered cards when I select on a specific report type == total specific reports, and also filter by reports types</p>
-            <div class="clearfix"></div>
+
+
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Generated Reports Graph</h5>
+
+                        <canvas id="barChart" style="max-height: 400px;"></canvas>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", () => {
+                                new Chart(document.querySelector('#barChart'), {
+                                    type: 'bar',
+                                    data: {
+                                        labels: ['Clients', 'Houses', 'Usrs', 'Water Bills', 'Rent', 'June', 'July', 'February', 'March', 'April', 'May', 'June', 'July'],
+                                        datasets: [{
+                                            label: 'Bar Chart',
+                                            data: [65, 59, 80, 81, 56, 55, 40, 59, 80, 81, 56, 55, 40],
+                                            backgroundColor: [
+                                                'rgba(255, 99, 132, 0.2)',
+                                                'rgba(255, 159, 64, 0.2)',
+                                                'rgba(255, 205, 86, 0.2)',
+                                                'rgba(75, 192, 192, 0.2)',
+                                                'rgba(54, 162, 235, 0.2)',
+                                                'rgba(153, 102, 255, 0.2)',
+                                                'rgba(201, 203, 207, 0.2)',
+                                                'rgba(255, 159, 64, 0.2)',
+                                                'rgba(255, 205, 86, 0.2)',
+                                                'rgba(75, 192, 192, 0.2)',
+                                                'rgba(54, 162, 235, 0.2)',
+                                                'rgba(153, 102, 255, 0.2)',
+                                                'rgba(201, 203, 207, 0.2)'
+                                            ],
+                                            borderColor: [
+                                                'rgb(255, 99, 132)',
+                                                'rgb(255, 159, 64)',
+                                                'rgb(255, 205, 86)',
+                                                'rgb(75, 192, 192)',
+                                                'rgb(54, 162, 235)',
+                                                'rgb(153, 102, 255)',
+                                                'rgb(201, 203, 207)',
+                                                'rgb(255, 159, 64)',
+                                                'rgb(255, 205, 86)',
+                                                'rgb(75, 192, 192)',
+                                                'rgb(54, 162, 235)',
+                                                'rgb(153, 102, 255)',
+                                                'rgb(201, 203, 207)'
+                                            ],
+                                            borderWidth: 1
+                                        }]
+                                    },
+                                    options: {
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true
+                                            }
+                                        }
+                                    }
+                                });
+                            });
+                        </script>
+
+                    </div>
+                </div>
+            </div>
             <div class="row">
-                <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="col-lg-6">
                     <div class="card">
-                        <div class="card-header">
-                            <strong>Client Report</strong>
-                        </div>
-                        <div class="card-body card-block">
-                            <p>Generate Report</p>
-                            <form method='post' action="{{ url('client-report-generation') }}">
-                                @csrf
-                                <div class="form-group">
-                                    <label class=" form-control-label">Client Type</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                        <select name="client_type" required id="client_type" class="form-control">
-                                            <option value="all">all</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" form-control-label">Format</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-file"></i></div>
-                                        <select name="format" required id="format" class="form-control">
-                                            <option value="csv">CSV</option>
-                                            <option value="excel">Excel</option>
-                                            <option value="pdf">PDF</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-secondary btn-sm form-control">Export</button>
-                                </div>
-                            </form>
+                        <div class="card-body">
+                            <h5 class="card-title">Clients Chart</h5>
+
+                            <canvas id="ClientpieChart" style="max-height: 400px;"></canvas>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", () => {
+                                    new Chart(document.querySelector('#ClientpieChart'), {
+                                        type: 'pie',
+                                        data: {
+                                            labels: [
+                                                'Active',
+                                                'Inactive',
+                                                'Blocked'
+                                            ],
+                                            datasets: [{
+                                                label: 'My First Dataset',
+                                                data: [300, 50, 100],
+                                                backgroundColor: [
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(54, 162, 235)',
+                                                    'rgb(255, 205, 86)'
+                                                ],
+                                                hoverOffset: 4
+                                            }]
+                                        }
+                                    });
+                                });
+                            </script>
+
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="col-lg-6">
                     <div class="card">
-                        <div class="card-header">
-                            <strong>Houses Report</strong>
-                        </div>
-                        <div class="card-body card-block">
-                            <p>Generate Report</p>
-                            <form method='post' action="{{ url('houses-report-generation') }}">
-                                @csrf
-                                <div class="form-group">
-                                    <label class=" form-control-label">Client Type</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                        <select name="houses_type" required id="client_type" class="form-control">
-                                            <option value="all">all</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" form-control-label">Format</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-file"></i></div>
-                                        <select name="format" required id="format" class="form-control">
-                                            <option value="csv">CSV</option>
-                                            <option value="excel">Excel</option>
-                                            <option value="pdf">PDF</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-secondary btn-sm form-control">Export</button>
-                                </div>
-                            </form>
+                        <div class="card-body">
+                            <h5 class="card-title">Houses Chart</h5>
+
+                            <canvas id="HousespieChart" style="max-height: 400px;"></canvas>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", () => {
+                                    new Chart(document.querySelector('#HousespieChart'), {
+                                        type: 'pie',
+                                        data: {
+                                            labels: [
+                                                'Red',
+                                                'Blue',
+                                                'Yellow'
+                                            ],
+                                            datasets: [{
+                                                label: 'My First Dataset',
+                                                data: [300, 50, 100],
+                                                backgroundColor: [
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(54, 162, 235)',
+                                                    'rgb(255, 205, 86)'
+                                                ],
+                                                hoverOffset: 4
+                                            }]
+                                        }
+                                    });
+                                });
+                            </script>
+
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="col-lg-6">
                     <div class="card">
-                        <div class="card-header">
-                            <strong>Water Bill Report</strong>
-                        </div>
-                        <div class="card-body card-block">
-                            <p>Generate Report</p>
-                            <form method='post' action="{{ url('houses-report-generation') }}">
-                                @csrf
-                                <div class="form-group">
-                                    <label class=" form-control-label">Client Type</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                        <select name="houses_type" required id="client_type" class="form-control">
-                                            <option value="all">all</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" form-control-label">Format</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-file"></i></div>
-                                        <select name="format" required id="format" class="form-control">
-                                            <option value="csv">CSV</option>
-                                            <option value="excel">Excel</option>
-                                            <option value="pdf">PDF</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-secondary btn-sm form-control">Export</button>
-                                </div>
-                            </form>
+                        <div class="card-body">
+                            <h5 class="card-title">Users Chart</h5>
+
+                            <canvas id="UserspieChart" style="max-height: 400px;"></canvas>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", () => {
+                                    new Chart(document.querySelector('#UserspieChart'), {
+                                        type: 'pie',
+                                        data: {
+                                            labels: [
+                                                'Red',
+                                                'Blue',
+                                                'Yellow'
+                                            ],
+                                            datasets: [{
+                                                label: 'My First Dataset',
+                                                data: [300, 50, 100],
+                                                backgroundColor: [
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(54, 162, 235)',
+                                                    'rgb(255, 205, 86)'
+                                                ],
+                                                hoverOffset: 4
+                                            }]
+                                        }
+                                    });
+                                });
+                            </script>
+
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="col-lg-6">
                     <div class="card">
-                        <div class="card-header">
-                            <strong>Rent Report</strong>
-                        </div>
-                        <div class="card-body card-block">
-                            <p>Generate Report</p>
-                            <form method='post' action="{{ url('houses-report-generation') }}">
-                                @csrf
-                                <div class="form-group">
-                                    <label class=" form-control-label">Client Type</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                        <select name="houses_type" required id="client_type" class="form-control">
-                                            <option value="all">all</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" form-control-label">Format</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-file"></i></div>
-                                        <select name="format" required id="format" class="form-control">
-                                            <option value="csv">CSV</option>
-                                            <option value="excel">Excel</option>
-                                            <option value="pdf">PDF</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-secondary btn-sm form-control">Export</button>
-                                </div>
-                            </form>
+                        <div class="card-body">
+                            <h5 class="card-title">Water Bills Chart</h5>
+
+                            <canvas id="WaterBillpieChart" style="max-height: 400px;"></canvas>
+                            <script>
+                                document.addEventListener("DOMContentLoaded", () => {
+                                    new Chart(document.querySelector('#WaterBillpieChart'), {
+                                        type: 'pie',
+                                        data: {
+                                            labels: [
+                                                'Red',
+                                                'Blue',
+                                                'Yellow'
+                                            ],
+                                            datasets: [{
+                                                label: 'My First Dataset',
+                                                data: [300, 50, 100],
+                                                backgroundColor: [
+                                                    'rgb(255, 99, 132)',
+                                                    'rgb(54, 162, 235)',
+                                                    'rgb(255, 205, 86)'
+                                                ],
+                                                hoverOffset: 4
+                                            }]
+                                        }
+                                    });
+                                });
+                            </script>
+
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
     </main>

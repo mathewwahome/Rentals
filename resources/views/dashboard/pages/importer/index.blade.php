@@ -30,20 +30,28 @@
         </div>
 
         <section class="section dashboard">
+
             <div class="row">
+
+
+
                 <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-1">
-                                    <i class="pe-7s-users"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{ $webusers }}</span></div>
-                                        <div class="stat-heading">Houses</div>
+                    <div class="info-card sales-card ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-file-earmark-text"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ $webusers }}</h6>
+                                        <span class="text-muted small pt-2 ps-1">Total Report</span>
+
                                     </div>
                                 </div>
+                            </div>
+                            <div class="card-header text-center bg-success">
+                                <a class="text-light" href="{{ route('single_report', ['report' => 'client']) }}">More Info<i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -52,76 +60,167 @@
 
 
                 <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-3">
-                                    <i class="pe-7s-users"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{ $appusers }}</span></div>
-                                        <div class="stat-heading">Clients</div>
+                    <div class="info-card sales-card ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ $appusers }}</h6>
+                                        <span class="text-muted small pt-2 ps-1">Client Report</span>
+
                                     </div>
                                 </div>
+                            </div>
+                            <div class="card-header text-center bg-success">
+                                <a class="text-light" href="{{ route('single_report', ['report' => 'client']) }}">More Info<i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
+
+
+
                 <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-4">
-                                    <i class="pe-7s-users"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{ $t_clients }}</span></div>
-                                        <div class="stat-heading">Users</div>
+                    <div class="info-card sales-card ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-house"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ $t_clients }}</h6>
+                                        <span class="text-muted small pt-2 ps-1">Houses Report</span>
+
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-2">
-                                    <i class="pe-7s-home"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{ $t_houses }}</span></div>
-                                        <div class="stat-heading">Water Bills</div>
-                                    </div>
-                                </div>
+                            <div class="card-header text-center bg-success">
+                                <a class="text-light" href="{{ route('single_report', ['report' => 'houses']) }}">More Info<i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
 
+
+
+
                 <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-2">
-                                    <i class="pe-7s-home"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{ $t_houses }}</span></div>
-                                        <div class="stat-heading">Rent</div>
+                    <div class="info-card sales-card ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ $t_houses }}</h6>
+                                        <span class="text-muted small pt-2 ps-1">Users Report</span>
+
                                     </div>
                                 </div>
                             </div>
+                            <div class="card-header text-center bg-success">
+                                <a class="text-light" href="{{ route('single_report', ['report' => 'users']) }}">More Info<i class="bi bi-arrow-right"></i></a>
+                            </div>
                         </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6">
+                    <div class="info-card sales-card ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-water"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ $t_houses }}</h6>
+                                        <span class="text-muted small pt-2 ps-1">Rent</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-header text-center bg-success">
+                                <a class="text-light" href="{{ route('single_report', ['report' => 'water bills']) }}">More Info<i class="bi bi-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+            </div>
+
+
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Generated Reports Graph</h5>
+
+                        <canvas id="barChart" style="max-height: 400px;"></canvas>
+                        <script>
+                            document.addEventListener("DOMContentLoaded", () => {
+                                new Chart(document.querySelector('#barChart'), {
+                                    type: 'bar',
+                                    data: {
+                                        labels: ['Clients', 'Houses', 'Usrs', 'Water Bills', 'Rent', 'June', 'July', 'February', 'March', 'April', 'May', 'June', 'July'],
+                                        datasets: [{
+                                            label: 'Bar Chart',
+                                            data: [65, 59, 80, 81, 56, 55, 40, 59, 80, 81, 56, 55, 40],
+                                            backgroundColor: [
+                                                'rgba(255, 99, 132, 0.2)',
+                                                'rgba(255, 159, 64, 0.2)',
+                                                'rgba(255, 205, 86, 0.2)',
+                                                'rgba(75, 192, 192, 0.2)',
+                                                'rgba(54, 162, 235, 0.2)',
+                                                'rgba(153, 102, 255, 0.2)',
+                                                'rgba(201, 203, 207, 0.2)',
+                                                'rgba(255, 159, 64, 0.2)',
+                                                'rgba(255, 205, 86, 0.2)',
+                                                'rgba(75, 192, 192, 0.2)',
+                                                'rgba(54, 162, 235, 0.2)',
+                                                'rgba(153, 102, 255, 0.2)',
+                                                'rgba(201, 203, 207, 0.2)'
+                                            ],
+                                            borderColor: [
+                                                'rgb(255, 99, 132)',
+                                                'rgb(255, 159, 64)',
+                                                'rgb(255, 205, 86)',
+                                                'rgb(75, 192, 192)',
+                                                'rgb(54, 162, 235)',
+                                                'rgb(153, 102, 255)',
+                                                'rgb(201, 203, 207)',
+                                                'rgb(255, 159, 64)',
+                                                'rgb(255, 205, 86)',
+                                                'rgb(75, 192, 192)',
+                                                'rgb(54, 162, 235)',
+                                                'rgb(153, 102, 255)',
+                                                'rgb(201, 203, 207)'
+                                            ],
+                                            borderWidth: 1
+                                        }]
+                                    },
+                                    options: {
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true
+                                            }
+                                        }
+                                    }
+                                });
+                            });
+                        </script>
+
                     </div>
                 </div>
             </div>
+           
 
             <div class="clearfix"></div>
             <div class="row">
