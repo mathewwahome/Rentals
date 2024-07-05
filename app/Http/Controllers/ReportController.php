@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class ReportController extends Controller
 {
     //
-    public function index(){
+    public function index()
+    {
         return view("dashboard.pages.report.index");
     }
 
@@ -16,5 +17,12 @@ class ReportController extends Controller
         $report_type = $request->query('report');
 
         return view('dashboard.pages.report.components.single_report_view', ['report_type' => $report_type]);
+    }
+    public function show_generate(Request $request)
+    {
+
+        $report_type = $request->query('report');
+
+        return view('dashboard.pages.report.components.single_report_generate', ['report_type' => $report_type]);
     }
 }

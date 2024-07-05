@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('report_id');
             $table->string('report_type');
             $table->date('report_date');
-            $table->date('report_path');
+            $table->string('report_path');
             $table->timestamps();
         });
     }

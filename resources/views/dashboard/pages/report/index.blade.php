@@ -28,11 +28,13 @@
 
 <body>
     @php
-    $webusers = App\Models\WebUsers::count();
-    $appusers = App\Models\WebUsers::count();
-    $t_houses = App\Models\Houses::count();
-    $t_clients = App\Models\Clients::count();
-    $latestclients = App\Models\Clients::take(5)->get();
+    $reports=App\Models\Reports::all()->count();
+    $clients =App\Models\Reports::where('report_type','client')->count();
+    $houses =App\Models\Reports::where('report_type','houses')->count();
+    $users =App\Models\Reports::where('report_type','users')->count();
+    $water_bills =App\Models\Reports::where('report_type','water bills')->count();
+    $rent =App\Models\Reports::where('report_type','rent')->count();
+
     @endphp
     @include('layout.aside')
     <div id="right-panel" class="right-panel">
@@ -60,30 +62,9 @@
                 </div>
             </div>
         </div>
-
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="stat-widget-five">
-                                    <div class="stat-icon dib flat-color-1">
-                                        <i class="pe-7s-users"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{ $webusers }}</span></div>
-                                            <div class="stat-heading">Houses</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
@@ -93,15 +74,57 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{ $appusers }}</span></div>
-                                            <div class="stat-heading">Clients</div>
+                                            <div class="stat-text"><span class="count">{{ $reports }}</span></div>
+                                            <div class="stat-heading">Total Report</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="card-header text-center bg-info">
+                                <a class="text-light" href="{{ route('single_report', ['report' => 'client']) }}"><i class="fa fa-arrow-right">More Info</i></a>
+                            </div>
                         </div>
                     </div>
-
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-3">
+                                        <i class="pe-7s-users"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">{{ $clients }}</span></div>
+                                            <div class="stat-heading">Clients Report</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-header text-center bg-info">
+                                <a class="text-light" href="{{ route('single_report', ['report' => 'client']) }}"><i class="fa fa-arrow-right">More Info</i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-1">
+                                        <i class="pe-7s-home"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">{{ $houses }}</span></div>
+                                            <div class="stat-heading">Houses</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-header text-center bg-info">
+                                <a class="text-light" href="{{ route('single_report', ['report' => 'houses']) }}"><i class="fa fa-arrow-right">More Info </i></a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
@@ -111,12 +134,15 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{ $t_clients }}</span></div>
+                                            <div class="stat-text"><span class="count">{{ $users }}</span></div>
                                             <div class="stat-heading">Users</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="card-header text-center bg-info">
+                                <a class="text-light" href="{{ route('single_report', ['report' => 'users']) }}"><i class="fa fa-arrow-right">More Info </i></a>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6">
@@ -128,15 +154,17 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{ $t_houses }}</span></div>
+                                            <div class="stat-text"><span class="count">{{ $water_bills }}</span></div>
                                             <div class="stat-heading">Water Bills</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="card-header text-center bg-info">
+                                <a class="text-light" href="{{ route('single_report', ['report' => 'water bills']) }}"><i class="fa fa-arrow-right">More Info </i></a>
+                            </div>
                         </div>
                     </div>
-
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
@@ -146,16 +174,22 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{ $t_houses }}</span></div>
+                                            <div class="stat-text"><span class="count">{{ $rent }}</span></div>
                                             <div class="stat-heading">Rent</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="card-header text-center bg-info">
+                                <a class="text-light" href="{{ route('single_report', ['report' => 'rent']) }}"><i class="fa fa-arrow-right">More Info </i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <p>Create a table to display all the available reports then one can select the report they want to generate</p>
+                <p>Create report types for generation</p>
+                <p>Create report graph for all the generated reports</p>
+                <p>dispal filtered cards when I select on a specific report type == total specific reports, and also filter by reports types</p>
                 <div class="clearfix"></div>
                 <div class="row">
                     <div class="col-lg-6 col-md-12 col-sm-12">

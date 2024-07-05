@@ -58,13 +58,16 @@
                
                 <li class="menu-title">Admin</li>
                 <li>
-                    <a href="{{route('admintheme')}}"> <i class="menu-icon fa fa-windows"></i>Theme </a>
+                    <a href="{{route('admintheme')}}"> <i class="menu-icon fa fa-windows"></i>Theme</a>
                 </li>
                 <li>
-                    <a href="{{route('users')}}"> <i class="menu-icon fa fa-users"></i>Users </a>
+                    <a href="{{route('users')}}"> <i class="menu-icon fa fa-users"></i>Users</a>
                 </li>
                 <li>
-                    <a href="{{route('houses')}}"> <i class="menu-icon fa fa-building-o"></i>Back Up </a>
+                    <a href="{{route('houses')}}"> <i class="menu-icon fa fa-building-o"></i>Back Up</a>
+                </li>
+                <li>
+                    <a href="{{route('houses')}}"> <i class="menu-icon fa fa-money"></i>Accounts Module</a>
                 </li>
             </ul>
         </div>

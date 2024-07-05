@@ -71,7 +71,7 @@
                             <div class="card-header">
                                 <strong class="card-title">{{ Str::title($report_type) }} Reports</strong>
                                 <div>
-                                    <a href="{{ route('single_report', ['report' => $report_type]) }}" class="btn btn-secondary">Report +</a>
+                                    <a href="{{ route('_single_report_generate', ['report' => $report_type]) }}" class="btn btn-secondary">Report +</a>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -81,21 +81,23 @@
                                             <th>NO.</th>
                                             <th>Report ID</th>
                                             <th>Date</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($reports as $report)
                                         <tr>
                                             <td>{{ $report->id }}</td>
-                                            <td>{{ $report->client_name }}</td>
+                                            <td>{{ $report->report_id }}</td>
+                                            <td>{{ $report->report_date }}</td>
                                             <td>
                                                 <div class="row ml-2">
                                                     <form action="{{ route('client.view') }}" method="POST">
                                                         @csrf
-                                                        <input type="hidden" name="client_id" value="{{ $client->id }}">
+                                                        <input type="hidden" name="client_id" value="{{ $report->id }}">
                                                         <button class="btn btn-success" type="submit"><i class="ti ti-book"></i></button>
                                                     </form>
-                                                    <a class="btn btn-secondary ml-2" href="{{ route('single.client', ['client' => $client->id]) }}"><i class="fa fa-pencil"></i></a>
+                                                    <a class="btn btn-secondary ml-2" href="{{ url($report->report_path) }}"><i class="fa fa-download"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

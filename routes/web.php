@@ -99,6 +99,23 @@ Route::get('/get-client/{houseNo}', [HouseController::class, 'getClientNameByHou
 //report generation
 Route::post('/client-report-generation', [ReportGenerator::class, 'generateClientReport']);
 Route::post('/houses-report-generation', [ReportGenerator::class, 'generateHousesReport']);
+//users-report-generation
+Route::post('/users-report-generation', [ReportGenerator::class, 'generateUsersReport']);
+//water_bill-report-generation
+Route::post('/water_bill-report-generation', [ReportGenerator::class, 'generateWaterBillReport']);
+//rent-report-generation
+Route::post('/rent-report-generation', [ReportGenerator::class, 'generateRentReport']);
+
+
+
+
+
+
+
+
+
+
+
 
 // importer
 Route::get('importer_dashboard', [ImporterController::class, 'index'])->name('importer_dashboard');
@@ -107,3 +124,4 @@ Route::get('report_dashboard', [ReportController::class, 'index'])->name('report
 
 
 Route::get('/single_report', [ReportController::class, 'show'])->name('single_report');
+Route::get('/_single_report_generate', [ReportController::class, 'show_generate'])->name('_single_report_generate');
