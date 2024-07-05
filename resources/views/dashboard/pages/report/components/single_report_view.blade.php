@@ -22,17 +22,19 @@
     <link rel="stylesheet" href="assets/css/style.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
+    <style>
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
 </head>
 
 <body>
     @include('layout.aside')
     @php
-    $webusers = App\Models\WebUsers::count();
-    $appusers = App\Models\WebUsers::count();
-    $t_houses = App\Models\Houses::count();
-    $t_clients = App\Models\Clients::count();
-    $clients = App\Models\Clients::all();
+    $reports = App\Models\Reports::where('report_type',$report_type)->get();
     @endphp
     <div id="right-panel" class="right-panel">
         @include('layout.header')
@@ -42,7 +44,7 @@
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>Clients</h1>
+                                <h1>{{ Str::title($report_type) }} Reports</h1>
                             </div>
                         </div>
                     </div>
@@ -51,8 +53,8 @@
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
                                     <li><a href="#">Dashboard</a></li>
-                                    <li><a href="#">Table</a></li>
-                                    <li class="active">Clients</li>
+                                    <li><a href="#">Report</a></li>
+                                    <li class="active">{{ Str::title($report_type) }}</li>
                                 </ol>
                             </div>
                         </div>
@@ -62,116 +64,30 @@
         </div>
         <div class="content">
             <div class="animated fadeIn">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="stat-widget-five">
-                                    <div class="stat-icon dib flat-color-1">
-                                        <i class="pe-7s-users"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{$webusers}}</span></div>
-                                            <div class="stat-heading">Web Users</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="stat-widget-five">
-                                    <div class="stat-icon dib flat-color-3">
-                                        <i class="pe-7s-users"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{$appusers}}</span></div>
-                                            <div class="stat-heading">App Users</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="stat-widget-five">
-                                    <div class="stat-icon dib flat-color-4">
-                                        <i class="pe-7s-users"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{$t_clients}}</span></div>
-                                            <div class="stat-heading">Total Clients</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="stat-widget-five">
-                                    <div class="stat-icon dib flat-color-2">
-                                        <i class="pe-7s-home"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{$t_houses}}</span></div>
-                                            <div class="stat-heading">Total Houses</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
-                            <style>
-                                .card-header {
-                                    display: flex;
-                                    justify-content: space-between;
-                                    align-items: center;
-                                }
-                            </style>
                             <div class="card-header">
-                                <strong class="card-title">Client Table</strong>
+                                <strong class="card-title">{{ Str::title($report_type) }} Reports</strong>
                                 <div>
-                                    <a href="{{ route('single_report', ['report' => 'client']) }}" class="btn btn-secondary">Report</a>
-                                    <a href="" type="button" class="btn btn-secondary">New Client +</a>
+                                    <a href="{{ route('single_report', ['report' => $report_type]) }}" class="btn btn-secondary">Report +</a>
                                 </div>
                             </div>
                             <div class="card-body">
                                 <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Client Name</th>
-                                            <th>Client Email</th>
-                                            <th>Phone</th>
-                                            <th>House No.</th>
-                                            <th>Status.</th>
-                                            <th>...</th>
+                                            <th>NO.</th>
+                                            <th>Report ID</th>
+                                            <th>Date</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                        @foreach ($clients as $client)
+                                        @foreach ($reports as $report)
                                         <tr>
-                                            <td>{{ $client->id }}</td>
-                                            <td>{{ $client->client_name }}</td>
-                                            <td>{{ $client->email }}</td>
-                                            <td>{{ $client->phone }}</td>
-                                            <td>{{ $client->house_no }}</td>
-                                            <td>status</td>
+                                            <td>{{ $report->id }}</td>
+                                            <td>{{ $report->client_name }}</td>
                                             <td>
                                                 <div class="row ml-2">
                                                     <form action="{{ route('client.view') }}" method="POST">

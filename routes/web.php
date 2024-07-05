@@ -13,6 +13,8 @@ use App\Http\Controllers\RentController;
 use App\Http\Controllers\ReportGenerator;
 use App\Http\Controllers\ThemeController;
 use App\Http\Controllers\WaterMeterReadingsController;
+use App\Http\Controllers\ImporterController;
+use App\Http\Controllers\ReportController;
 
 Route::get('/', function () {
     return redirect()->route('login');
@@ -97,3 +99,11 @@ Route::get('/get-client/{houseNo}', [HouseController::class, 'getClientNameByHou
 //report generation
 Route::post('/client-report-generation', [ReportGenerator::class, 'generateClientReport']);
 Route::post('/houses-report-generation', [ReportGenerator::class, 'generateHousesReport']);
+
+// importer
+Route::get('importer_dashboard', [ImporterController::class, 'index'])->name('importer_dashboard');
+// report_dashboard
+Route::get('report_dashboard', [ReportController::class, 'index'])->name('report_dashboard');
+
+
+Route::get('/single_report', [ReportController::class, 'show'])->name('single_report');

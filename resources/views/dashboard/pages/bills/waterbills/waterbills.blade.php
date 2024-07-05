@@ -15,8 +15,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -28,12 +27,12 @@
 
 <body>
     @php
-        $previousbills = 2;
-        $currentbills = \App\Models\WaterBills::where('id', '1')->get();
-        $toatalbills =2;
-        $overduebills = 2;
-        // meater readings report
-        $total_m_readings = 2; //total units
+    $previousbills = 2;
+    $currentbills = \App\Models\WaterBills::where('id', '1')->get();
+    $toatalbills =2;
+    $overduebills = 2;
+    // meater readings report
+    $total_m_readings = 2; //total units
 
     @endphp
 
@@ -175,10 +174,20 @@
                     <div class="row">
                         <div class="col-xl-8">
                             <div class="card">
-                                <div class="card-body">
-                                    <h4 class="box-title">Monthly Water Units Report</h4>
+                                <style>
+                                    .card-header {
+                                        display: flex;
+                                        justify-content: space-between;
+                                        align-items: center;
+                                    }
+                                </style>
+                                <div class="card-header">
+                                    <strong class="card-title">Monthly Water Units Report</strong>
+                                    <div>
+                                        <a href="{{ route('single_report', ['report' =>  'water bills']) }}" class="btn btn-secondary">Report +</a>
+                                    </div>
                                 </div>
-                                <div class="card-body--">
+                                <div class="card-body">
                                     <div class="table-stats order-table ov-h">
                                         <table class="table ">
                                             <thead>
@@ -193,24 +202,22 @@
                                             </thead>
                                             <tbody>
                                                 @php
-                                                    $waterbills = App\Models\WaterBills::all();
+                                                $waterbills = App\Models\WaterBills::all();
                                                 @endphp
                                                 @foreach ($waterbills as $waterbill)
-                                                    <tr class=" pb-0">
-                                                        <td class="serial">{{ $waterbill->id }}</td>
-                                                        <td> {{ $waterbill->date }} </td>
-                                                        <td> <span class="name">{{ $waterbill->month }}</span> </td>
-                                                        <td><span class="count">{{ $waterbill->no_clients }}</span>
-                                                        </td>
-                                                        <td>
-                                                            <span
-                                                                class="badge badge-complete">{{ $waterbill->status }}</span>
-                                                        </td>
-                                                        <td>
-                                                            <span
-                                                                class="badge badge-complete">{{ $waterbill->action }}</span>
-                                                        </td>
-                                                    </tr>
+                                                <tr class=" pb-0">
+                                                    <td class="serial">{{ $waterbill->id }}</td>
+                                                    <td> {{ $waterbill->date }} </td>
+                                                    <td> <span class="name">{{ $waterbill->month }}</span> </td>
+                                                    <td><span class="count">{{ $waterbill->no_clients }}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="badge badge-complete">{{ $waterbill->status }}</span>
+                                                    </td>
+                                                    <td>
+                                                        <span class="badge badge-complete">{{ $waterbill->action }}</span>
+                                                    </td>
+                                                </tr>
                                                 @endforeach
 
                                             </tbody>
@@ -228,17 +235,14 @@
                                             <p>one should only be allowed to upload the meter readings for a particular
                                                 month then close the upload ability ---for every month provide an excel
                                                 template for the available clients---</p>
-                                            <a href="{{ route('water.bills.template') }}"
-                                                class="btn btn-success">Download Template</a>
+                                            <a href="{{ route('water.bills.template') }}" class="btn btn-success">Download Template</a>
                                             <hr>
                                             <div class="form  mt-4">
-                                                <form action="{{ route('water.bills.import') }}" method="POST"
-                                                    enctype="multipart/form-data">
+                                                <form action="{{ route('water.bills.import') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="form-group">
                                                         <label for="meter_readings">Meter Readings:</label>
-                                                        <input type="file" name="meter_readings" required
-                                                            class="form-control">
+                                                        <input type="file" name="meter_readings" required class="form-control">
                                                         <p>This sholud be the filled excel</p>
                                                     </div>
                                                     <button type="submit" class="btn btn-success">Upload</button>
@@ -247,15 +251,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-xl-12">
-                                    <div class="card br-0">
-                                        <div class="card-body">
-                                            <p>generate this months report if not generated</p>
-                                            <p>This button should only be visible only if the excel has been uploded</p>
-                                            <button class="btn btn-success">Generate</button>
-                                        </div>
-                                    </div>
-                                </div>
+                              
                                 <div class="col-lg-6 col-xl-12">
                                     <div class="card br-0">
                                         <div class="card-body">
@@ -271,19 +267,18 @@
                                             <h4>Update specific Water Tenant Bill</h4>
                                             <div class="form  mt-4">
                                                 @php
-                                                    $clients = \App\Models\Clients::all();
+                                                $clients = \App\Models\Clients::all();
                                                 @endphp
 
-                                                <form action="{{ route('water.single.payment') }}" method="POST"
-                                                    enctype="multipart/form-data">
+                                                <form action="{{ route('water.single.payment') }}" method="POST" enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="form-group">
                                                         <label for="client_name">Client Name</label>
-                                                        <select name="client_id" class="form-control"
-                                                            id="client_name">
+                                                        <select name="client_id" class="form-control" id="client_name">
                                                             @foreach ($clients as $client)
-                                                                <option value="{{ $client->id }}">
-                                                                    {{ $client->client_name }}</option>
+                                                            <option value="{{ $client->id }}">
+                                                                {{ $client->client_name }}
+                                                            </option>
                                                             @endforeach
                                                         </select>
                                                     </div>
@@ -294,13 +289,11 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="amount">Amount Paid</label>
-                                                        <input type="number" class="form-control" name="amount"
-                                                            placeholder="Amount" id="amount" min="1">
+                                                        <input type="number" class="form-control" name="amount" placeholder="Amount" id="amount" min="1">
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="amount">Payment Date</label>
-                                                        <input type="date" class="form-control"
-                                                            name="payment_date" id="payment_date">
+                                                        <input type="date" class="form-control" name="payment_date" id="payment_date">
                                                     </div>
                                                     <button type="submit" class="btn btn-success">Update</button>
                                                 </form>
@@ -341,7 +334,7 @@
 
 
 
-                                                {{--     
+                                                {{--
                                                 <script>
                                                     document.getElementById('client_name').addEventListener('change', function() {
                                                         var clientId = this.value;

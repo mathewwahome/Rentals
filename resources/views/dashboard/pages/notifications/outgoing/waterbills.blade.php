@@ -91,6 +91,7 @@
                         <div class="card-header">
                             <strong class="card-title">send water Bills Clients</strong>
                         </div>
+                        
                         <div class="card-body">
                             <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                 <thead>

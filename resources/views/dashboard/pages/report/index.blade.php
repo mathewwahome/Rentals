@@ -27,6 +27,13 @@
 </head>
 
 <body>
+    @php
+    $webusers = App\Models\WebUsers::count();
+    $appusers = App\Models\WebUsers::count();
+    $t_houses = App\Models\Houses::count();
+    $t_clients = App\Models\Clients::count();
+    $latestclients = App\Models\Clients::take(5)->get();
+    @endphp
     @include('layout.aside')
     <div id="right-panel" class="right-panel">
         @include('layout.header')
@@ -57,77 +64,100 @@
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
-                    <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="col-lg-3 col-md-6">
                         <div class="card">
-                            <div class="card-header">
-                                <strong>New Client</strong>
-                            </div>
-                            <div class="card-body card-block">
-                                <form method='post' action="{{ route('add-new-client') }}">
-
-                                    @csrf
-                                    <div class="form-group">
-                                        <label class=" form-control-label">client name</label>
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                            <input class="form-control" required name="client_name">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-1">
+                                        <i class="pe-7s-users"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">{{ $webusers }}</span></div>
+                                            <div class="stat-heading">Houses</div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class=" form-control-label">Phone</label>
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-phone"></i></div>
-                                            <input class="form-control" required name="phone">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class=" form-control-label">Email</label>
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-envelope-o"></i></div>
-                                            <input class="form-control" type="email" required name="email">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class=" form-control-label">ID</label>
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-male"></i></div>
-                                            <input class="form-control" required type="number" name="id">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class=" form-control-label">Entry Date</label>
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                            <input class="form-control" required type="date" name="entry_date">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class=" form-control-label">House No</label>
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
-                                            <select name="house_no" class="form-control" required id="house_no">
-                                                @php
-                                                $houses = App\Models\Houses::whereNotIn('house_no', function (
-                                                $query,
-                                                ) {
-                                                $query->select('house_no')->from('clients');
-                                                })->get();
-                                                @endphp
-                                                @foreach ($houses as $house)
-                                                <option value="{{ $house->house_no }}">{{ $house->house_no }}
-                                                </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-secondary btn-sm form-control">Create</button>
-                                    </div>
-                                </form>
-
+                                </div>
                             </div>
                         </div>
                     </div>
+
+
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-3">
+                                        <i class="pe-7s-users"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">{{ $appusers }}</span></div>
+                                            <div class="stat-heading">Clients</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-4">
+                                        <i class="pe-7s-users"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">{{ $t_clients }}</span></div>
+                                            <div class="stat-heading">Users</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-2">
+                                        <i class="pe-7s-home"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">{{ $t_houses }}</span></div>
+                                            <div class="stat-heading">Water Bills</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-2">
+                                        <i class="pe-7s-home"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">{{ $t_houses }}</span></div>
+                                            <div class="stat-heading">Rent</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>Create a table to display all the available reports then one can select the report they want to generate</p>
+                <div class="clearfix"></div>
+                <div class="row">
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="card">
                             <div class="card-header">
@@ -167,17 +197,89 @@
                     <div class="col-lg-6 col-md-12 col-sm-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong>Client Report</strong>
+                                <strong>Houses Report</strong>
                             </div>
                             <div class="card-body card-block">
                                 <p>Generate Report</p>
-                                <form method='post' action="{{ url('client-report-generation') }}">
+                                <form method='post' action="{{ url('houses-report-generation') }}">
                                     @csrf
                                     <div class="form-group">
                                         <label class=" form-control-label">Client Type</label>
                                         <div class="input-group">
                                             <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                            <select name="client_type" required id="client_type" class="form-control">
+                                            <select name="houses_type" required id="client_type" class="form-control">
+                                                <option value="all">all</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class=" form-control-label">Format</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-file"></i></div>
+                                            <select name="format" required id="format" class="form-control">
+                                                <option value="csv">CSV</option>
+                                                <option value="excel">Excel</option>
+                                                <option value="pdf">PDF</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-secondary btn-sm form-control">Export</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Water Bill Report</strong>
+                            </div>
+                            <div class="card-body card-block">
+                                <p>Generate Report</p>
+                                <form method='post' action="{{ url('houses-report-generation') }}">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label class=" form-control-label">Client Type</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                            <select name="houses_type" required id="client_type" class="form-control">
+                                                <option value="all">all</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class=" form-control-label">Format</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-file"></i></div>
+                                            <select name="format" required id="format" class="form-control">
+                                                <option value="csv">CSV</option>
+                                                <option value="excel">Excel</option>
+                                                <option value="pdf">PDF</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-secondary btn-sm form-control">Export</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong>Rent Report</strong>
+                            </div>
+                            <div class="card-body card-block">
+                                <p>Generate Report</p>
+                                <form method='post' action="{{ url('houses-report-generation') }}">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label class=" form-control-label">Client Type</label>
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                                            <select name="houses_type" required id="client_type" class="form-control">
                                                 <option value="all">all</option>
                                             </select>
                                         </div>

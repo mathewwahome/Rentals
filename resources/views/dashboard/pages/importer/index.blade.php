@@ -1,4 +1,5 @@
 <!doctype html>
+
 <html class="no-js" lang="">
 
 <head>
@@ -18,22 +19,22 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
-    <link rel="stylesheet" href="assets/css/lib/datatable/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/lib/chosen/chosen.min.css">
 
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
 </head>
 
 <body>
-    @include('layout.aside')
     @php
     $webusers = App\Models\WebUsers::count();
     $appusers = App\Models\WebUsers::count();
     $t_houses = App\Models\Houses::count();
     $t_clients = App\Models\Clients::count();
-    $clients = App\Models\Clients::all();
+    $latestclients = App\Models\Clients::take(5)->get();
     @endphp
+    @include('layout.aside')
     <div id="right-panel" class="right-panel">
         @include('layout.header')
         <div class="breadcrumbs">
@@ -42,7 +43,7 @@
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>Clients</h1>
+                                <h1>Dashboard</h1>
                             </div>
                         </div>
                     </div>
@@ -50,8 +51,7 @@
                         <div class="page-header float-right">
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
-                                    <li><a href="#">Dashboard</a></li>
-                                    <li><a href="#">Table</a></li>
+                                    <li><a href="{{route('dashboard')}}">Dashboard</a></li>
                                     <li class="active">Clients</li>
                                 </ol>
                             </div>
@@ -60,6 +60,7 @@
                 </div>
             </div>
         </div>
+
         <div class="content">
             <div class="animated fadeIn">
                 <div class="row">
@@ -72,14 +73,17 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{$webusers}}</span></div>
-                                            <div class="stat-heading">Web Users</div>
+                                            <div class="stat-text"><span class="count">{{ $webusers }}</span></div>
+                                            <div class="stat-heading">Houses</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
+
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
@@ -89,14 +93,15 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{$appusers}}</span></div>
-                                            <div class="stat-heading">App Users</div>
+                                            <div class="stat-text"><span class="count">{{ $appusers }}</span></div>
+                                            <div class="stat-heading">Clients</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body">
@@ -106,8 +111,8 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{$t_clients}}</span></div>
-                                            <div class="stat-heading">Total Clients</div>
+                                            <div class="stat-text"><span class="count">{{ $t_clients }}</span></div>
+                                            <div class="stat-heading">Users</div>
                                         </div>
                                     </div>
                                 </div>
@@ -123,8 +128,26 @@
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count">{{$t_houses}}</span></div>
-                                            <div class="stat-heading">Total Houses</div>
+                                            <div class="stat-text"><span class="count">{{ $t_houses }}</span></div>
+                                            <div class="stat-heading">Water Bills</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-2">
+                                        <i class="pe-7s-home"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">{{ $t_houses }}</span></div>
+                                            <div class="stat-heading">Rent</div>
                                         </div>
                                     </div>
                                 </div>
@@ -132,60 +155,75 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="clearfix"></div>
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="card">
-                            <style>
-                                .card-header {
-                                    display: flex;
-                                    justify-content: space-between;
-                                    align-items: center;
-                                }
-                            </style>
                             <div class="card-header">
-                                <strong class="card-title">Client Table</strong>
-                                <div>
-                                    <a href="{{ route('single_report', ['report' => 'client']) }}" class="btn btn-secondary">Report</a>
-                                    <a href="" type="button" class="btn btn-secondary">New Client +</a>
-                                </div>
+                                <strong class="card-title">Houses Importer</strong>
                             </div>
                             <div class="card-body">
-                                <table id="bootstrap-data-table" class="table table-striped table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Client Name</th>
-                                            <th>Client Email</th>
-                                            <th>Phone</th>
-                                            <th>House No.</th>
-                                            <th>Status.</th>
-                                            <th>...</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                        @foreach ($clients as $client)
-                                        <tr>
-                                            <td>{{ $client->id }}</td>
-                                            <td>{{ $client->client_name }}</td>
-                                            <td>{{ $client->email }}</td>
-                                            <td>{{ $client->phone }}</td>
-                                            <td>{{ $client->house_no }}</td>
-                                            <td>status</td>
-                                            <td>
-                                                <div class="row ml-2">
-                                                    <form action="{{ route('client.view') }}" method="POST">
-                                                        @csrf
-                                                        <input type="hidden" name="client_id" value="{{ $client->id }}">
-                                                        <button class="btn btn-success" type="submit"><i class="ti ti-book"></i></button>
-                                                    </form>
-                                                    <a class="btn btn-secondary ml-2" href="{{ route('single.client', ['client' => $client->id]) }}"><i class="fa fa-pencil"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                <form action="{{ route('houses-importer') }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="file" id="houses" required name="houses" placeholder="Houses" class="form-control">
+                                            <div class="input-group-addon"><i class="pe-7s-home"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions form-group">
+                                        <button type="submit" class="btn btn-secondary btn-sm">Import</button>
+                                    </div>
+                                </form>
+                                <div class="form-actions form-group">
+                                    <button type="submit" class="btn btn-secondary btn-sm">Download Template</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Clients Importer</strong>
+                            </div>
+                            <div class="card-body">
+                                <form action="{{ route('houses-importer') }}" method="post" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="file" id="houses" required name="houses" placeholder="Houses" class="form-control">
+                                            <div class="input-group-addon"><i class="pe-7s-home"></i></div>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions form-group">
+                                        <button type="submit" class="btn btn-secondary btn-sm">Import</button>
+                                    </div>
+                                </form>
+                                <div class="form-actions form-group">
+                                    <button type="submit" class="btn btn-secondary btn-sm">Download Template</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">
+                                <strong class="card-title">Upload this months meter readings</strong>
+                            </div>
+                            <div class="card-body">
+                                <div class="form  mt-4">
+                                    <form action="{{ route('water.bills.import') }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <div class="form-group">
+                                            <label for="meter_readings">Meter Readings:</label>
+                                            <input type="file" name="meter_readings" required class="form-control">
+                                        </div>
+                                        <button type="submit" class="btn btn-secondary btn-sm">Upload</button>
+                                    </form>
+                                </div>
+                                <hr>
+                                <a href="{{ route('water.bills.template') }}" class="btn btn-secondary btn-sm">Download Template</a>
                             </div>
                         </div>
                     </div>
@@ -200,21 +238,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/lib/data-table/datatables.min.js"></script>
-    <script src="assets/js/lib/data-table/dataTables.bootstrap.min.js"></script>
-    <script src="assets/js/lib/data-table/dataTables.buttons.min.js"></script>
-    <script src="assets/js/lib/data-table/buttons.bootstrap.min.js"></script>
-    <script src="assets/js/lib/data-table/jszip.min.js"></script>
-    <script src="assets/js/lib/data-table/vfs_fonts.js"></script>
-    <script src="assets/js/lib/data-table/buttons.html5.min.js"></script>
-    <script src="assets/js/lib/data-table/buttons.print.min.js"></script>
-    <script src="assets/js/lib/data-table/buttons.colVis.min.js"></script>
-    <script src="assets/js/init/datatables-init.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#bootstrap-data-table-export').DataTable();
-        });
-    </script>
+    <script src="assets/js/lib/chosen/chosen.jquery.min.js"></script>
 </body>
 
 </html>

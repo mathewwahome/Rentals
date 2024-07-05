@@ -16,8 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.0/css/flag-icon.min.css">
     <link rel="stylesheet" href="assets/css/cs-skin-elastic.css">
     <link rel="stylesheet" href="assets/css/lib/datatable/dataTables.bootstrap.min.css">
@@ -34,10 +33,10 @@
     <div id="right-panel" class="right-panel">
         @include('layout.header')
         @php
-            $houses = App\Models\Houses::all();
-            $no_houses = App\Models\Houses::count();
-            $vacantHouses = \App\Models\Houses::where('status', 'vacant')->count();
-            $occupiedHouses = \App\Models\Houses::where('status', 'occupied')->count();
+        $houses = App\Models\Houses::all();
+        $no_houses = App\Models\Houses::count();
+        $vacantHouses = \App\Models\Houses::where('status', 'vacant')->count();
+        $occupiedHouses = \App\Models\Houses::where('status', 'occupied')->count();
 
         @endphp
         <div class="content">
@@ -97,109 +96,93 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="clearfix"></div>
-                <div class="row">
-                <div class="col-md-6">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong class="card-title">Houses Importer</strong>
-                        </div>
-                        <div class="card-body">
-                            <form action="{{ route('houses-importer') }}" method="post" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <input type="file" id="houses" required name="houses" placeholder="Houses"
-                                            class="form-control">
-                                        <div class="input-group-addon"><i class="pe-7s-home"></i></div>
-                                    </div>
-                                </div>
-                                <div class="form-actions form-group">
-                                    <button type="submit" class="btn btn-secondary btn-sm">Import</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12">
+                    <div class="col-lg-3 col-md-6">
                         <div class="card">
-                            <div class="card-header">
-                                <strong>Houses Report</strong>
-                            </div>
-                            <div class="card-body card-block">
-                                <p>Generate Report</p>
-                                <form method='post' action="{{ url('houses-report-generation') }}">
-                                    @csrf
-                                    <div class="form-group">
-                                        <label class=" form-control-label">Client Type</label>
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                            <select name="houses_type" required id="client_type" class="form-control">
-                                                <option value="all">all</option>
-                                            </select>
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-3">
+                                        <i class="pe-7s-home"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">{{ $occupiedHouses }}</span>
+                                            </div>
+                                            <div class="stat-heading">Importer</div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label class=" form-control-label">Format</label>
-                                        <div class="input-group">
-                                            <div class="input-group-addon"><i class="fa fa-file"></i></div>
-                                            <select name="format" required id="format" class="form-control">
-                                                <option value="csv">CSV</option>
-                                                <option value="excel">Excel</option>
-                                                <option value="pdf">PDF</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <button type="submit" class="btn btn-secondary btn-sm form-control">Export</button>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
-                    </div></div>
-                <div class="clearfix"></div>
-
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong class="card-title">Houses Table</strong>
-                        </div>
-                        <div class="card-body">
-                            <table id="bootstrap-data-table" class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>House NO.</th>
-                                        <th>Rooms</th>
-                                        <th>price</th>
-                                        <th>status</th>
-                                        <th>edit</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($houses as $house)
-                                        <tr>
-                                            <td>{{ $house->house_no }}</td>
-                                            <td>{{ $house->rooms }}</td>
-                                            <td>{{ $house->price }}</td>
-                                            <td>{{ $house->status }}</td>
-                                            <td>
-                                                <div class="row ml-2">
-                                                   
-                                                    <a class="btn btn-secondary ml-2"
-                                                        href="{{ route('single.house', ['house' => $house->id]) }}"><i
-                                                        class="ti ti-book"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-
-                                </tbody>
-                            </table>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-3">
+                                        <i class="pe-7s-home"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count">{{ $occupiedHouses }}</span>
+                                            </div>
+                                            <div class="stat-heading">Report</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="clearfix"></div>
+                <div class="card col-md-12">
+                    <style>
+                        .card-header {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        }
+                    </style>
+                    <div class="card-header">
+                        <strong class="card-title">Houses Table</strong>
+                        <div>
+                            <a href="{{ route('single_report', ['report' => 'houses']) }}" class="btn btn-secondary">Report</a>
+                            <a href="" type="button" class="btn btn-secondary">New House +</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>House NO.</th>
+                                    <th>Rooms</th>
+                                    <th>price</th>
+                                    <th>status</th>
+                                    <th>edit</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($houses as $house)
+                                <tr>
+                                    <td>{{ $house->house_no }}</td>
+                                    <td>{{ $house->rooms }}</td>
+                                    <td>{{ $house->price }}</td>
+                                    <td>{{ $house->status }}</td>
+                                    <td>
+                                        <div class="row ml-2">
+
+                                            <a class="btn btn-secondary ml-2" href="{{ route('single.house', ['house' => $house->id]) }}"><i class="ti ti-book"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                
+
             </div>
         </div>
         <div class="clearfix"></div>
