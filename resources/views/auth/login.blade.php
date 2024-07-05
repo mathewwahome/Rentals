@@ -1,41 +1,66 @@
 <!doctype html>
 <html class="no-js" lang="en">
-@include('layout.head')
+
+<head>
+    @include('layout.head')
+</head>
+
 <body class="bg-dark">
-
-    <div class="sufee-login d-flex align-content-center flex-wrap">
+    <main>
         <div class="container">
-            <div class="login-content">
-                <div class="login-logo">
-                    <h1>Rentals</h1>
-                </div>
-                <div class="login-form">
-                    <form method="POST" action="{{route('user.login')}}">
-                        @csrf
-                        <div class="form-group">
-                            <label>Email address</label>
-                            <input type="email" class="form-control" name="email" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" class="form-control" name="password" placeholder="Password">
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Remember Me
-                            </label>
-                            <label class="pull-right">
-                                <a href="#">Forgotten Password?</a>
-                            </label>
+            <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                            <div class="d-flex justify-content-center py-4">
+                                <a href="index.html" class="logo d-flex align-items-center w-auto">
+                                    <span class="d-none d-lg-block">@include('components.logo')</span>
+                                </a>
+                            </div>
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <div class="pt-4 pb-2">
+                                        <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
+                                        <p class="text-center small">Enter your username & password to login</p>
+                                    </div>
+                                    <form class="row g-3 needs-validation" method="POST" action="{{route('user.login')}}">
 
+                                        <div class="col-12">
+                                            <label for="yourUsername" class="form-label">Username</label>
+                                            <div class="input-group">
+                                                <input type="email" name="email" class="form-control" id="yourUsername" required>
+                                                <div class="invalid-feedback">Please enter your username.</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <label for="yourPassword" class="form-label">Password</label>
+                                            <input type="password" name="password" class="form-control" id="yourPassword" required>
+                                            <div class="invalid-feedback">Please enter your password!</div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
+                                                <label class="form-check-label" for="rememberMe">Remember me</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn btn-primary w-100" type="submit">Login</button>
+                                        </div>
+                                        <div class="col-12">
+                                            <p class="small mb-0"><a href="pages-register.html">Forgotten Password?</p>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Sign in</button>
-                    </form>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
-    </div>
-
-  @include('layout.scripts')
+    </main>
+    @include('layout.scripts')
 </body>
+
 </html>

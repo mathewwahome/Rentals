@@ -1,75 +1,173 @@
-<aside id="left-panel" class="left-panel">
-    <nav class="navbar navbar-expand-sm navbar-default">
-        <div id="main-menu" class="main-menu collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li>
-                    <a href="{{route('dashboard')}}"><i class="menu-icon fa fa-laptop"></i>Dashboard </a>
-                </li>
-                <li class="menu-title">Clients</li>
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Clients</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-users"></i><a href="{{route('viewclients')}}">Clients</a></li>
-                        <!-- <li><i class="fa fa-user"></i><a href="{{route('newclients')}}">New Client</a></li> -->
-                    </ul>
-                </li>
-                <li class="menu-title">Houses</li>
-                <li>
-                    <a href="{{route('houses')}}"> <i class="menu-icon fa fa-building-o"></i>Houses </a>
-                </li>
-                <li class="menu-title">Bills</li>
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-money"></i>Bills</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('water-bills')}}">Water Bills</a></li>
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('rent')}}">Rent</a></li>
-                    </ul>
-                </li>
+<aside id="sidebar" class="sidebar">
 
-                {{-- --}}
-                <li class="menu-title">Importer</li>
-                <li>
-                    <a href="{{route('importer_dashboard')}}"> <i class="menu-icon fa fa-building-o"></i>Importer Dashboard</a>
-                </li>
+    <ul class="sidebar-nav" id="sidebar-nav">
 
-                <li class="menu-title">Reports</li>
-                <li>
-                    <a href="{{route('report_dashboard')}}"> <i class="menu-icon fa fa-building-o"></i>Report Dashboard</a>
-                </li>
-               
-                {{-- --}}
+        <li class="nav-item">
+            <a class="nav-link " href="{{route('dashboard')}}">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
 
-                <li class="menu-title">Notifications</li>
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-money"></i>Incomming</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('not.in.all')}}">All</a></li>
-                    </ul>
-                </li>
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-money"></i>Outgoing</a>
-                    <ul class="sub-menu children dropdown-menu">
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('not.out.all')}}">All</a></li>
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('not.out.all')}}">SMS</a></li>
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('not.out.all')}}">Email</a></li>
-                        <li><i class="menu-icon fa fa-sign-in"></i><a href="{{route('not.out.water-bills')}}">Water Bills</a></li>
-                    </ul>
-                </li>
-               
-                <li class="menu-title">Admin</li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#Clients-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Clients</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="Clients-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
                 <li>
-                    <a href="{{route('admintheme')}}"> <i class="menu-icon fa fa-windows"></i>Theme</a>
+                    <a href="{{route('viewclients')}}">
+                        <i class="bi bi-circle"></i><span>Clients</span>
+                    </a>
                 </li>
                 <li>
-                    <a href="{{route('users')}}"> <i class="menu-icon fa fa-users"></i>Users</a>
-                </li>
-                <li>
-                    <a href="{{route('houses')}}"> <i class="menu-icon fa fa-building-o"></i>Back Up</a>
-                </li>
-                <li>
-                    <a href="{{route('houses')}}"> <i class="menu-icon fa fa-money"></i>Accounts Module</a>
+                    <a href="{{route('newclients')}}">
+                        <i class="bi bi-circle"></i><span>New Client</span>
+                    </a>
                 </li>
             </ul>
-        </div>
-    </nav>
-</aside>
+        </li>
+        <li class="nav-heading">Houses</li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('houses')}}">
+                <i class="bi bi-person"></i>
+                <span>Houses</span>
+            </a>
+        </li>
+
+
+
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#bills-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Bills</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="bills-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+
+                <li>
+                    <a href="{{route('water-bills')}}">
+                        <i class="bi bi-circle"></i><span>Water Bills</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('rent')}}">
+                        <i class="bi bi-circle"></i><span>Rent</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+
+        <li class="nav-heading">Importer</li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('importer_dashboard')}}">
+                <i class="bi bi-person"></i>
+                <span>Importer Dashboard</span>
+            </a>
+        </li>
+        <li class="nav-heading">Reports</li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('report_dashboard')}}">
+                <i class="bi bi-person"></i>
+                <span>Report Dashboard</span>
+            </a>
+        </li>
+
+
+
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#Notifications-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Notifications</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="Notifications-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{route('not.out.all')}}">
+                        <i class="bi bi-circle"></i><span>All</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('not.out.all')}}">
+                        <i class="bi bi-circle"></i><span>SMS</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('not.out.all')}}">
+                        <i class="bi bi-circle"></i><span>Email</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('not.out.water-bills')}}">
+                        <i class="bi bi-circle"></i><span>Water Bills</span>
+                    </a>
+                </li>
+            </ul>
+            <li class="nav-heading">ADMIN</li>
+            </li>
+
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#Admin-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-layout-text-window-reverse"></i><span>Admin</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="Admin-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{route('admintheme')}}">
+                        <i class="bi bi-circle"></i><span>Theme</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('users')}}">
+                        <i class="bi bi-circle"></i><span>Users</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('users')}}">
+                        <i class="bi bi-circle"></i><span>Back Up</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('users')}}">
+                        <i class="bi bi-circle"></i><span>Accounts Module</span>
+                    </a>
+                </li>
+            </ul>
+        </li><!-- End Tables Nav -->
+
+
+
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('admintheme')}}">
+                <i class="bi bi-person"></i>
+                <span>Theme</span>
+            </a>
+        </li><!-- End Profile Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('users')}}">
+                <i class="bi bi-question-circle"></i>
+                <span>Users</span>
+            </a>
+        </li><!-- End F.A.Q Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('houses')}}">
+                <i class="bi bi-envelope"></i>
+                <span>Back Up</span>
+            </a>
+        </li><!-- End Contact Page Nav -->
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('houses')}}">
+                <i class="bi bi-card-list"></i>
+                <span>Accounts Module</span>
+            </a>
+        </li><!-- End Register Page Nav -->
+
+
+    </ul>
+
+</aside><!-- End Sidebar-->
