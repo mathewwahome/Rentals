@@ -21,8 +21,7 @@ class WaterBillsReadings implements ToModel,  WithHeadingRow
             'action' => $row['id'],
             'date' =>  Carbon::now(),
             'name' => $row['id'],
-            'house_number' => $row['id'],
-            'current_m_readings' => $row['id'],
+            'house_number' => $row['house_number'],
         ]);
     }
 }

@@ -2,6 +2,8 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
+        <li class="nav-heading">Dashboards</li>
+
         <li class="nav-item">
             <a class="nav-link " href="{{route('dashboard')}}">
                 <i class="bi bi-grid"></i>
@@ -9,6 +11,27 @@
             </a>
         </li>
 
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('importer_dashboard')}}">
+                <i class="bi bi-person"></i>
+                <span>Importer Dashboard</span>
+            </a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('report_dashboard')}}">
+                <i class="bi bi-person"></i>
+                <span>Report Dashboard</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="{{route('houses')}}">
+                <i class="bi bi-person"></i>
+                <span>Houses</span>
+            </a>
+        </li>
+        
+        <li class="nav-heading">Clients</li>
         <li class="nav-item">
             <a class="nav-link collapsed" data-bs-target="#Clients-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-menu-button-wide"></i><span>Clients</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -27,24 +50,22 @@
                 </li>
             </ul>
         </li>
-        <li class="nav-heading">Houses</li>
 
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="{{route('houses')}}">
-                <i class="bi bi-person"></i>
-                <span>Houses</span>
-            </a>
-        </li>
+       
 
 
 
 
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#bills-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Bills</span><i class="bi bi-chevron-down ms-auto"></i>
+            <a class="nav-link collapsed" data-bs-target="#Accounting-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>Accounting</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="bills-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-
+            <ul id="Accounting-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{route('water-bills')}}">
+                        <i class="bi bi-circle"></i><span>Accounts Dashboard</span>
+                    </a>
+                </li>
                 <li>
                     <a href="{{route('water-bills')}}">
                         <i class="bi bi-circle"></i><span>Water Bills</span>
@@ -58,22 +79,7 @@
             </ul>
         </li>
 
-        <li class="nav-heading">Importer</li>
 
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="{{route('importer_dashboard')}}">
-                <i class="bi bi-person"></i>
-                <span>Importer Dashboard</span>
-            </a>
-        </li>
-        <li class="nav-heading">Reports</li>
-
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="{{route('report_dashboard')}}">
-                <i class="bi bi-person"></i>
-                <span>Report Dashboard</span>
-            </a>
-        </li>
 
 
 
@@ -104,8 +110,8 @@
                     </a>
                 </li>
             </ul>
-            <li class="nav-heading">ADMIN</li>
-            </li>
+        <li class="nav-heading">ADMIN</li>
+        </li>
 
 
         <li class="nav-item">
@@ -128,11 +134,7 @@
                         <i class="bi bi-circle"></i><span>Back Up</span>
                     </a>
                 </li>
-                <li>
-                    <a href="{{route('users')}}">
-                        <i class="bi bi-circle"></i><span>Accounts Module</span>
-                    </a>
-                </li>
+
             </ul>
         </li><!-- End Tables Nav -->
 

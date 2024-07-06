@@ -12,6 +12,11 @@
     $t_houses = App\Models\Houses::count();
     $t_clients = App\Models\Clients::count();
     $latestclients = App\Models\Clients::take(5)->get();
+    $chartData = [
+    'clients' => $t_clients,
+    'houses' => $t_houses,
+    'users' => $webusers + $appusers,
+    ];
     @endphp
     @include('layout.header')
     @include('layout.aside')

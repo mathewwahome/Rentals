@@ -70,8 +70,24 @@ Route::post('/add-new-client', [ClientController::class, 'store'])->name('add-ne
 Route::get('/clients/{client}', [ClientController::class, 'clientedit'])->name('single.client');
 Route::post('/client/details', [ClientController::class, 'clientview'])->name('client.view');
 
-//houses
-Route::post('houses-importer', [HouseController::class, 'import'])->name('houses-importer');
+//Importer
+Route::post('houses-importer', [ImporterController::class, 'Houses'])->name('houses-importer');
+Route::post('clients-importer', [ImporterController::class, 'Clients'])->name('clients-importer');
+Route::post('water-bills-import', [ImporterController::class, 'WaterBillsimport'])->name('water.bills.import');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //
 Route::get('single/house/{house}', [HouseController::class, 'singlehouse'])->name('single.house');
@@ -85,7 +101,7 @@ Route::post('month.rent.bill', [RentController::class, 'MonthlyRentBill'])->name
 
 //generate excel sheet for a certain month
 Route::get('water-bills-template', [ExcelController::class, 'WaterTemplateDownload'])->name('water.bills.template');
-Route::post('water-bills-import', [ExcelController::class, 'WaterBillsimport'])->name('water.bills.import');
+Route::get('clients-import-template', [ExcelController::class, 'ClientsImportTemplate'])->name('clients.import.template');
 
 //month.water.bill
 Route::post('water.single.payment', [WaterMeterReadingsController::class, 'singlePayment'])->name('water.single.payment');
@@ -125,3 +141,11 @@ Route::get('report_dashboard', [ReportController::class, 'index'])->name('report
 
 Route::get('/single_report', [ReportController::class, 'show'])->name('single_report');
 Route::get('/_single_report_generate', [ReportController::class, 'show_generate'])->name('_single_report_generate');
+
+
+
+
+// single_import
+Route::get('/single_import', [ImporterController::class, 'show'])->name('single_import');
+// _single_import
+Route::get('/_single_import', [ImporterController::class, 'show_import'])->name('_single_import');
