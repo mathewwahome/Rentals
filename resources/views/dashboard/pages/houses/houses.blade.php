@@ -115,7 +115,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                <table class="table table-striped table-bordered datatable">
+                    <table class="table table-striped table-bordered datatable">
 
                         <thead>
                             <tr>
@@ -134,9 +134,8 @@
                                 <td>{{ $house->price }}</td>
                                 <td>{{ $house->status }}</td>
                                 <td>
-                                    <div class="row ml-2">
-
-                                        <a class="btn btn-secondary ml-2" href="{{ route('single.house', ['house' => $house->id]) }}"><i class="ti ti-book"></i></a>
+                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                        <a class="btn btn-secondary ml-2" href="{{ route('single.house', ['house' => $house->id]) }}"><i class="bi bi-book"></i></a>
                                     </div>
                                 </td>
                             </tr>
