@@ -37,9 +37,6 @@
           </div>
           <div class="col-xxl-4 col-md-6">
             <div class="card info-card revenue-card">
-
-
-
               <div class="card-body">
                 <h5 class="card-title">App User</h5>
 

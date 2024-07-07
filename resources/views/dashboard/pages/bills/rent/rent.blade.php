@@ -35,77 +35,90 @@
             <div class="row">
 
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
+
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
                         <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-1">
-                                    <i class="pe-7s-cash"></i>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-people"></i>
                                 </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text">Ksh {{ $totalbill }}</div>
-                                        <div class="stat-heading">Total Bill</div>
-                                    </div>
+                                <div class="ps-3">
+                                    <h6>sh {{ $totalbill }}</h6>
+                                    <span class="text-muted small pt-2 ps-1">Total Rent</span>
+
                                 </div>
                             </div>
+                        </div>
+                        <div class="card-header text-center bg-success">
+                            <a class="text-light" href="{{ route('single_import', ['imports' => 'all']) }}">More Info<i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
+                        <div class="card-body">
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-people"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>sh {{ $payed_bill }}</h6>
+                                    <span class="text-muted small pt-2 ps-1">Payed Rent</span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-header text-center bg-success">
+                            <a class="text-light" href="{{ route('single_import', ['imports' => 'all']) }}">More Info<i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
                         <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-2">
-                                    <i class="pe-7s-cash"></i>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-people"></i>
                                 </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text">{{ $payed_bill }}</div>
-                                        <div class="stat-heading">Payed</div>
-                                    </div>
+                                <div class="ps-3">
+                                    <h6>sh {{ $unpaid_bill }}</h6>
+                                    <span class="text-muted small pt-2 ps-1">Unpayed Rent</span>
+
                                 </div>
                             </div>
+                        </div>
+                        <div class="card-header text-center bg-success">
+                            <a class="text-light" href="{{ route('single_import', ['imports' => 'all']) }}">More Info<i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
+                        <div class="card-body">
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-people"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>sh {{ $overdue_bill }}</h6>
+                                    <span class="text-muted small pt-2 ps-1">Overdue Rent</span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-header text-center bg-success">
+                            <a class="text-light" href="{{ route('single_import', ['imports' => 'all']) }}">More Info<i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-3">
-                                    <i class="pe-7s-cash"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{ $unpaid_bill }}</span></div>
-                                        <div class="stat-heading">Unpayed Bills</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-4">
-                                    <i class="pe-7s-cash"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text">{{ $overdue_bill }}</div>
-                                        <div class="stat-heading">Overdue</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="clearfix"></div>

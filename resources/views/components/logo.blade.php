@@ -4,7 +4,6 @@
     $jsonContent = file_get_contents($jsonFilePath);
     $data = json_decode($jsonContent, true);
     @endphp
-    <h1>{{ $data['name'] }}</h1>
-                    <!-- <img src="images/logo.png" alt="Logo"> -->
+    <img src="assets/img/logo.png" alt="{{ $data['name'] }}">
 
 </div>

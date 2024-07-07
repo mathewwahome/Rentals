@@ -32,93 +32,68 @@
 
         <section class="section dashboard">
             <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
+
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
                         <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-1">
-                                    <i class="pe-7s-home"></i>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-people"></i>
                                 </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{ $no_houses }}</span></div>
-                                        <div class="stat-heading">Total Houses</div>
-                                    </div>
+                                <div class="ps-3">
+                                    <h6>{{ $no_houses }}</h6>
+                                    <span class="text-muted small pt-2 ps-1">Total Houses</span>
+
                                 </div>
                             </div>
+                        </div>
+                        <div class="card-header text-center bg-success">
+                            <a class="text-light" href="{{ route('single_import', ['imports' => 'all']) }}">More Info<i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
+
+
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
                         <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-2">
-                                    <i class="pe-7s-home"></i>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-people"></i>
                                 </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{ $vacantHouses }}</span></div>
-                                        <div class="stat-heading">Vacant Houses</div>
-                                    </div>
+                                <div class="ps-3">
+                                    <h6>{{ $vacantHouses }}</h6>
+                                    <span class="text-muted small pt-2 ps-1">Vacant Houses</span>
+
                                 </div>
                             </div>
+                        </div>
+                        <div class="card-header text-center bg-success">
+                            <a class="text-light" href="{{ route('single_import', ['imports' => 'all']) }}">More Info<i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
                         <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-3">
-                                    <i class="pe-7s-home"></i>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-people"></i>
                                 </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{ $occupiedHouses }}</span>
-                                        </div>
-                                        <div class="stat-heading">Occupied houses</div>
-                                    </div>
+                                <div class="ps-3">
+                                    <h6>{{ $occupiedHouses }}</h6>
+                                    <span class="text-muted small pt-2 ps-1">Occupied Houses</span>
+
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-3">
-                                    <i class="pe-7s-home"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{ $occupiedHouses }}</span>
-                                        </div>
-                                        <div class="stat-heading">Importer</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-3">
-                                    <i class="pe-7s-home"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{ $occupiedHouses }}</span>
-                                        </div>
-                                        <div class="stat-heading">Report</div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="card-header text-center bg-success">
+                            <a class="text-light" href="{{ route('single_import', ['imports' => 'all']) }}">More Info<i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -140,7 +115,8 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <table id="bootstrap-data-table" class="table table-striped table-bordered">
+                <table class="table table-striped table-bordered datatable">
+
                         <thead>
                             <tr>
                                 <th>House NO.</th>
