@@ -149,7 +149,7 @@
                                     @foreach ($bills as $bill)
                                     <tr>
                                         <td>{{ $bill->id }}</td>
-                                        <td>{{ \App\Models\Clients::where('id', $bill->client_id)->value('client_name') }}</td>
+                                        <td>{{ \App\Models\Tenant::where('id', $bill->client_id)->value('client_name') }}</td>
                                         <td>{{ $bill->balance }}</td>
                                         <td>{{ $bill->previous_bill }}</td>
                                         <td>{{ $bill->unpaid_bill }}</td>

@@ -36,7 +36,7 @@
             word-break: break-all;
         }
 
-        .calc-keys button {
+        button {
             background: #333333;
             color: #fff;
             font-size: 1.5rem;
@@ -47,8 +47,8 @@
             width: 65px;
         }
 
-        .calc-keys button:active,
-        .calc-keys button:focus {
+        button:active,
+        button:focus {
             filter: brightness(120%);
         }
 
@@ -237,12 +237,8 @@
                                                 </td>
                                                 <td>
                                                     <div style="display: flex; align-items: center; gap: 8px;">
-                                                        <form action="{{ route('client.view') }}" method="POST">
-                                                            @csrf
-                                                            <input type="hidden" name="client_id" value="{{ $rentbill->id }}">
-                                                            <button class="btn btn-success" type="submit"><i class="ti ti-book"></i></button>
-                                                        </form>
-                                                        <a class="btn btn-secondary ml-2" href="{{ route('single.client', ['client' => $rentbill->id]) }}"><i class="bi bi-"></i></a>
+                                                        
+                                                        <a class="btn btn-secondary ml-2" href="{{ route('single.client', ['client' => $rentbill->id]) }}"><i class="bi bi-book"></i></a>
                                                     </div>
                                                 </td>
                                             </tr>
