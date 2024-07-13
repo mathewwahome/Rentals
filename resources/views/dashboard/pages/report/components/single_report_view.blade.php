@@ -64,13 +64,13 @@
                                                     <td>{{ $report->report_id }}</td>
                                                     <td>{{ $report->report_date }}</td>
                                                     <td>
-                                                        <div class="row ml-2">
+                                                    <div style="display: flex; align-items: center; gap: 8px;">
                                                             <form action="{{ route('client.view') }}" method="POST">
                                                                 @csrf
                                                                 <input type="hidden" name="client_id" value="{{ $report->id }}">
-                                                                <button class="btn btn-success" type="submit"><i class="ti ti-book"></i></button>
+                                                                <button class="btn btn-success" type="submit"><i class="bi bi-book"></i></button>
                                                             </form>
-                                                            <a class="btn btn-secondary ml-2" href="{{ url($report->report_path) }}"><i class="fa fa-download"></i></a>
+                                                            <a class="btn btn-secondary ml-2" href="{{ url($report->report_path) }}"><i class="bi bi-download"></i></a>
                                                         </div>
                                                     </td>
                                                 </tr>

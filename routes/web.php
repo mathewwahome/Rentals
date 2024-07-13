@@ -93,6 +93,7 @@ Route::get('clients-import-template', [ExcelController::class, 'ClientsImportTem
 
 //month.water.bill
 Route::post('water.single.payment', [WaterMeterReadingsController::class, 'singlePayment'])->name('water.single.payment');
+Route::post('rent.single.payment', [AccountingController::class, 'singlePayment'])->name('rent.single.payment');
 Route::post('water.bulk.payment', [WaterMeterReadingsController::class, 'bulkPayment'])->name('water.bulk.payment');
 
 //get house api

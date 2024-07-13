@@ -163,7 +163,7 @@ class ReportGenerator extends Controller
         $series = $report_type . '-R-' . substr(uniqid(), -5);
         $fileName = $series . '.' . $format;
         $reportPath = 'reports/' . $fileName;
-        $rent = RentBills::all();
+        $rents = RentBills::all();
 
         switch ($format) {
             case 'csv':
@@ -173,7 +173,7 @@ class ReportGenerator extends Controller
                 Excel::store(new RentReport, $reportPath);
                 break;
             case 'pdf':
-                $pdf = PDF::loadView('reports.rent', compact('rent'));
+                $pdf = PDF::loadView('reports.rent', compact('rents'));
                 $pdf->save(storage_path('app/' . $reportPath));
                 break;
             default:

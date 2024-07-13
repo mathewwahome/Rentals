@@ -209,7 +209,7 @@
                             <div class="card-header">
                                 <strong class="card-title">Tenant Rents</strong>
                                 <div>
-                                    <a href="{{ route('single_report', ['report' =>  'water bills']) }}" class="btn btn-secondary">Generate Report +</a>
+                                    <a href="{{ route('single_report', ['report' => 'rent']) }}" class="btn btn-secondary">Generate Report +</a>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -237,7 +237,7 @@
                                                 </td>
                                                 <td>
                                                     <div style="display: flex; align-items: center; gap: 8px;">
-                                                        
+
                                                         <a class="btn btn-secondary ml-2" href="{{ route('single.client', ['client' => $rentbill->id]) }}"><i class="bi bi-book"></i></a>
                                                     </div>
                                                 </td>
@@ -325,49 +325,19 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-xl-12">
-                                <div class="card br-0">
-                                    <div class="card-body">
-                                        <p>Upload this months meter readings</p>
-                                        <p>one should only be allowed to upload the meter readings for a particular
-                                            month then close the upload ability ---for every month provide an excel
-                                            template for the available clients---</p>
-                                        <a href="{{ route('water.bills.template') }}" class="btn btn-success">Download Template</a>
-                                        <hr>
-                                        <div class="form  mt-4">
-                                            <form action="{{ route('water.bills.import') }}" method="POST" enctype="multipart/form-data">
-                                                @csrf
-                                                <div class="form-group">
-                                                    <label for="meter_readings">Meter Readings:</label>
-                                                    <input type="file" name="meter_readings" required class="form-control">
-                                                    <p>This sholud be the filled excel</p>
-                                                </div>
-                                                <button type="submit" class="btn btn-success">Upload</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="col-lg-6 col-xl-12">
                                 <div class="card br-0">
-                                    <div class="card-body">
-                                        <p>After the generation of bills one can nowv send Sms To all the clients to
-                                            notify them about the bills</p>
-                                        <button class="btn btn-success">Send Bills</button>
+                                    <div class="card-header">
+                                        <h4>Rent Payment</h4>
+
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-xl-12">
-                                <div class="card br-0">
                                     <div class="card-body">
-                                        <h4>Update specific Water Tenant Bill</h4>
-                                        <div class="form  mt-4">
+                                        <div class="form mt-4">
                                             @php
                                             $clients = \App\Models\Tenant::all();
                                             @endphp
-
-                                            <form action="{{ route('water.single.payment') }}" method="POST" enctype="multipart/form-data">
+                                            <form action="{{ route('rent.single.payment') }}" method="POST" enctype="multipart/form-data">
                                                 @csrf
                                                 <div class="form-group">
                                                     <label for="client_name">Client Name</label>
@@ -392,52 +362,51 @@
                                                     <label for="amount">Payment Date</label>
                                                     <input type="date" class="form-control" name="payment_date" id="payment_date">
                                                 </div>
-                                                <button type="submit" class="btn btn-success">Update</button>
+                                                <div class="form-group mt-4">
+                                                    <input type="submit" class="btn btn-success" value="Update" />
                                             </form>
-                                            <script>
-                                                document.addEventListener("DOMContentLoaded", function() {
-                                                    // Trigger change event on client select element
-                                                    document.getElementById('client_name').dispatchEvent(new Event('change'));
-                                                });
-
-                                                // Rest of your JavaScript code here
-                                                document.getElementById('client_name').addEventListener('change', function() {
-                                                    var clientId = this.value;
-                                                    fetch('/get-houses/' + clientId)
-                                                        .then(response => response.json())
-                                                        .then(data => {
-                                                            var houseSelect = document.getElementById('house_no');
-                                                            houseSelect.innerHTML = '';
-                                                            data.forEach(function(house) {
-                                                                var option = document.createElement('option');
-                                                                option.text = house.house_no;
-                                                                option.value = house.house_no;
-                                                                houseSelect.appendChild(option);
-                                                            });
-                                                        });
-                                                });
-
-                                                document.getElementById('house_no').addEventListener('change', function() {
-                                                    var houseNo = this.value;
-                                                    axios.get('/get-client/' + houseNo)
-                                                        .then(response => {
-                                                            document.getElementById('client_name').value = response.data.client_name;
-                                                        })
-                                                        .catch(error => {
-                                                            console.error('Error fetching client name:', error);
-                                                        });
-                                                });
-                                            </script>
-
-
 
                                         </div>
+                                        <script>
+                                            document.addEventListener("DOMContentLoaded", function() {
+                                                // Trigger change event on client select element
+                                                document.getElementById('client_name').dispatchEvent(new Event('change'));
+                                            });
+
+                                            document.getElementById('client_name').addEventListener('change', function() {
+                                                var clientId = this.value;
+                                                fetch('/get-houses/' + clientId)
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        var houseSelect = document.getElementById('house_no');
+                                                        houseSelect.innerHTML = '';
+                                                        data.forEach(function(house) {
+                                                            var option = document.createElement('option');
+                                                            option.text = house.house_no;
+                                                            option.value = house.house_no;
+                                                            houseSelect.appendChild(option);
+                                                        });
+                                                    });
+                                            });
+
+                                            document.getElementById('house_no').addEventListener('change', function() {
+                                                var houseNo = this.value;
+                                                axios.get('/get-client/' + houseNo)
+                                                    .then(response => {
+                                                        document.getElementById('client_name').value = response.data.client_name;
+                                                    })
+                                                    .catch(error => {
+                                                        console.error('Error fetching client name:', error);
+                                                    });
+                                            });
+                                        </script>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
     </main>

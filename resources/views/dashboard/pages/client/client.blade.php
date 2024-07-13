@@ -10,8 +10,8 @@
     $webusers = App\Models\WebUsers::count();
     $appusers = App\Models\WebUsers::count();
     $t_houses = App\Models\Houses::count();
-    $t_clients = App\Models\Clients::count();
-    $clients = App\Models\Clients::all();
+    $t_clients = App\Models\Tenant::count();
+    $clients = App\Models\Tenant::all();
     @endphp
     @include('layout.header')
     @include('layout.aside')
@@ -32,7 +32,7 @@
 
         <section class="section dashboard">
             <div class="row">
-                
+
                 <div class="col-lg-3 col-md-6">
                     <div class="card">
                         <div class="card-body">
@@ -77,7 +77,7 @@
                                 <div class="stat-content">
                                     <div class="text-left dib">
                                         <div class="stat-text"><span class="count">{{$t_clients}}</span></div>
-                                        <div class="stat-heading">Total Clients</div>
+                                        <div class="stat-heading">Total Tenant</div>
                                     </div>
                                 </div>
                             </div>
@@ -143,13 +143,13 @@
                                         <td>{{ $client->house_no }}</td>
                                         <td>status</td>
                                         <td>
-                                            <div class="row ml-2">
+                                            <div style="display: flex; align-items: center; gap: 8px;">
                                                 <form action="{{ route('client.view') }}" method="POST">
                                                     @csrf
                                                     <input type="hidden" name="client_id" value="{{ $client->id }}">
-                                                    <button class="btn btn-success" type="submit"><i class="ti ti-book"></i></button>
+                                                    <button class="btn btn-success" type="submit"><i class="bi bi-book"></i></button>
                                                 </form>
-                                                <a class="btn btn-secondary ml-2" href="{{ route('single.client', ['client' => $client->id]) }}"><i class="fa fa-pencil"></i></a>
+                                                <a class="btn btn-secondary ml-2" href="{{ route('single.client', ['client' => $client->id]) }}"><i class="bi bi-pencil"></i></a>
                                             </div>
                                         </td>
                                     </tr>

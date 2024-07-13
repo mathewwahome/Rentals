@@ -79,7 +79,7 @@
                                             $houses = App\Models\Houses::whereNotIn('house_no', function (
                                             $query,
                                             ) {
-                                            $query->select('house_no')->from('clients');
+                                            $query->select('house_no')->from('tenants');
                                             })->get();
                                             @endphp
                                             @foreach ($houses as $house)

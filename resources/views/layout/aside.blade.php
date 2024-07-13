@@ -26,21 +26,21 @@
                     <span>Houses</span>
                 </a>
             </li>
-            <!-- Clients Section -->
-            <li class="nav-heading">Clients</li>
+            <!-- Tenants Section -->
+            <li class="nav-heading">Tenants</li>
             <li class="nav-item">
-                <a class="nav-link collapsed" data-bs-target="#Clients-nav" data-bs-toggle="collapse" href="#">
-                    <i class="bi bi-menu-button-wide"></i><span>Clients</span><i class="bi bi-chevron-down ms-auto"></i>
+                <a class="nav-link collapsed" data-bs-target="#Tenants-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-menu-button-wide"></i><span>Tenants</span><i class="bi bi-chevron-down ms-auto"></i>
                 </a>
-                <ul id="Clients-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+                <ul id="Tenants-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="{{ route('viewclients') }}">
-                            <i class="bi bi-circle"></i><span>Clients</span>
+                            <i class="bi bi-circle"></i><span>Tenants</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ route('newclients') }}">
-                            <i class="bi bi-circle"></i><span>New Client</span>
+                            <i class="bi bi-circle"></i><span>New Tenant</span>
                         </a>
                     </li>
                 </ul>

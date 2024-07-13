@@ -16,7 +16,7 @@ class AddMonthlyAmount extends Command
 
     public function handle()
     {
-        $amount = 100; // Example amount to add
+        $amount = -6000;
         $tenants = RentBills::all();
 
         foreach ($tenants as $tenant) {
