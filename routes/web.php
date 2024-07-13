@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AccountingController;
 use App\Http\Controllers\AfricasTalkingController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -72,21 +73,8 @@ Route::post('/client/details', [ClientController::class, 'clientview'])->name('c
 
 //Importer
 Route::post('houses-importer', [ImporterController::class, 'Houses'])->name('houses-importer');
-Route::post('clients-importer', [ImporterController::class, 'Clients'])->name('clients-importer');
+Route::post('clients-importer', [ImporterController::class, 'Tenant'])->name('clients-importer');
 Route::post('water-bills-import', [ImporterController::class, 'WaterBillsimport'])->name('water.bills.import');
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 //
@@ -149,3 +137,4 @@ Route::get('/_single_report_generate', [ReportController::class, 'show_generate'
 Route::get('/single_import', [ImporterController::class, 'show'])->name('single_import');
 // _single_import
 Route::get('/_single_import', [ImporterController::class, 'show_import'])->name('_single_import');
+Route::get('/accounting', [AccountingController::class, 'accounting'])->name('accounting');

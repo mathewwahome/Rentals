@@ -56,13 +56,13 @@ class ImporterController extends Controller
         return redirect()->back()->with('success', 'Data imported successfully.');
     }
     //clients
-    public function Clients(Request $request)
+    public function Tenant(Request $request)
     {
         $request->validate([
             'clients' => 'required|file|mimes:xlsx,csv,xls'
         ]);
 
-        $series = 'IC-' . 'Clients-' . substr(uniqid(), -5);
+        $series = 'IC-' . 'Tenant-' . substr(uniqid(), -5);
 
         $extension = $request->file('clients')->getClientOriginalExtension();
 
@@ -81,7 +81,7 @@ class ImporterController extends Controller
             'import_path' => $filePath,
         ]);
 
-        return redirect()->back()->with('success', 'Clients imported successfully.');
+        return redirect()->back()->with('success', 'Tenant imported successfully.');
     }
 
     public function WaterBillsimport(Request $request)

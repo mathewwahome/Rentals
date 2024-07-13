@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('rent_bills', function (Blueprint $table) {
             $table->id();
             $table->string('client_id');
-            $table->string('balance');
+            $table->decimal('balance');
             $table->string('previous_bill');
             $table->string('unpaid_bill');
             $table->string('overdue_bill');

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Clients;
 use App\Models\Houses;
 use App\Models\RentBills;
+use App\Models\Tenant;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -19,7 +19,7 @@ class ClientController extends Controller
     public function store(Request $request)
     {
 
-        $client = new Clients();
+        $client = new Tenant();
         $client->client_name = $request->client_name;
         $client->phone = $request->phone;
         $client->email = $request->email;
@@ -51,7 +51,7 @@ class ClientController extends Controller
     public function clientview(Request $request)
     {
         $client_id = $request->input('client_id');
-        $client = Clients::find($client_id);
+        $client = Tenant::find($client_id);
 
         if (!$client) {
             abort(404);
@@ -61,7 +61,7 @@ class ClientController extends Controller
 
     public function clientedit($client)
     {
-        $client = Clients::find($client);
+        $client = Tenant::find($client);
         return view('dashboard.pages.client.client-edit',  compact('client'));
     }
 }

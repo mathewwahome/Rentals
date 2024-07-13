@@ -2,7 +2,7 @@
 <html class="no-js" lang="">
 
 <head>
-@include('layout.head')
+    @include('layout.head')
 
 </head>
 
@@ -20,7 +20,11 @@
                 </ol>
             </nav>
         </div>
-
+        <form action="{{ route('sendSMS') }}" method="post">
+            @csrf
+            <input type="text" name="message">
+            <button type="submit" class="btn btn-info">send</button>
+        </form>
         <section class="section dashboard">
             <form action="{{ route('theme') }}" method="post">
                 @csrf

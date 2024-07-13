@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Imports\HousesImport;
-use App\Models\Clients;
+use App\Models\Tenant;
 use App\Models\Houses;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -14,7 +14,7 @@ class HouseController extends Controller
     public function singlehouse($house)
     {
         $house = Houses::find($house);
-        $clients = Clients::where('house_no', $house->house_no)->get();
+        $clients = Tenant::where('house_no', $house->house_no)->get();
         if ($clients->isNotEmpty()) {
             $client = $clients->first();
             
@@ -33,7 +33,7 @@ class HouseController extends Controller
     }
     public function getHousesByClientId($clientId)
     {
-        $houses = Clients::where('id', $clientId)->get(['house_no']);
+        $houses = Tenant::where('id', $clientId)->get(['house_no']);
         return response()->json($houses);
     }
       // Function to get client name based on house number
@@ -43,7 +43,7 @@ class HouseController extends Controller
           $house = Houses::where('house_no', $houseNo)->first();
           if ($house) {
               $clientId = $house->client_id;
-              $client = Clients::find($clientId);
+              $client = Tenant::find($clientId);
               if ($client) {
                   return response()->json(['client_name' => $client->name]);
               } else {

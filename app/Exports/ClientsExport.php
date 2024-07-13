@@ -2,7 +2,7 @@
 
 namespace App\Exports;
 
-use App\Models\Clients;
+use App\Models\Tenant;
 use Maatwebsite\Excel\Concerns\FromCollection;
 
 class ClientsExport implements FromCollection
@@ -12,6 +12,6 @@ class ClientsExport implements FromCollection
     */
     public function collection()
     {
-        return Clients::all();
+        return Tenant::all();
     }
 }

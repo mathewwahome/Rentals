@@ -22,6 +22,6 @@ class ExcelController extends Controller
 
     public function ClientsImportTemplate(Request $request)
     {
-        return Excel::download(new ClientsTemplateExport, 'Clients.xlsx');
+        return Excel::download(new ClientsTemplateExport, 'Tenants.xlsx');
     }
 }

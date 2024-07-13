@@ -2,7 +2,7 @@
 
 namespace App\Imports;
 
-use App\Models\Clients;
+use App\Models\Tenant;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Illuminate\Support\Facades\Log;
@@ -14,7 +14,7 @@ class ClientsImport implements ToModel,  WithHeadingRow
     {
 
         try {
-            return new Clients([
+            return new Tenant([
                 'client_name' => $row['client_name'],
                 'phone' => $row['phone'],
                 'email' => $row['email'],

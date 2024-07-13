@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Clients;
+use App\Models\Tenant;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 use App\Exports\ClientsExport;
@@ -28,7 +28,7 @@ class ReportGenerator extends Controller
         $series = $report_type . '-R-' . substr(uniqid(), -5);
         $fileName =  $series  . '.' . $format;
         $reportPath = 'reports/' . $fileName;
-        $clients = Clients::all();
+        $clients = Tenant::all();
 
         switch ($format) {
             case 'csv':

@@ -52,7 +52,7 @@
                 </a>
                 <ul id="Accounting-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
-                        <a href="{{ route('water-bills') }}">
+                        <a href="{{ route('accounting') }}">
                             <i class="bi bi-circle"></i><span>Accounts Dashboard</span>
                         </a>
                     </li>

@@ -3,7 +3,77 @@
 
 <head>
     @include('layout.head')
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: "Helvetica Neue", sans-serif;
+            box-sizing: border-box;
+        }
 
+
+        .calc-text-container {
+            background: #000000;
+            padding: 25px;
+            /* width: 350px; */
+            border-radius: 10px;
+        }
+
+        .calc-text {
+            margin-bottom: 20px;
+            padding-left: 5px;
+        }
+
+        .calc-text p {
+            width: 100%;
+            font-size: 3.5rem;
+            text-align: end;
+            background: transparent;
+            color: #fff;
+            border: none;
+            outline: none;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        .calc-keys button {
+            background: #333333;
+            color: #fff;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 70%;
+            cursor: pointer;
+            height: 65px;
+            width: 65px;
+        }
+
+        .calc-keys button:active,
+        .calc-keys button:focus {
+            filter: brightness(120%);
+        }
+
+        .calc-keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-row-gap: 15px;
+            grid-column-gap: 10px;
+        }
+
+        .key-zero {
+            grid-column: span 2;
+            width: 100%;
+            border-radius: 30px;
+        }
+
+        .key-operate {
+            background: #ff9501;
+        }
+
+        .key-others {
+            background: #a6a6a6;
+            color: #000000;
+        }
+    </style>
 
 </head>
 
@@ -16,8 +86,14 @@
     // meater readings report
     $total_m_readings = 2; //total units
 
-    @endphp
 
+    $totalbill = \App\Models\RentBills::sum('total_bill');
+    $unpaid_bill = \App\Models\RentBills::sum('unpaid_bill');
+    $overdue_bill = \App\Models\RentBills::sum('overdue_bill');
+    $payed_bill = \App\Models\RentBills::sum('payed_bill');
+    $overdue_bill = \App\Models\RentBills::sum('overdue_bill');
+    $bills = \App\Models\RentBills::all();
+    @endphp
     @include('layout.header')
     @include('layout.aside')
     <main id="main" class="main">
@@ -35,133 +111,89 @@
         <section class="section dashboard">
             <div class="row">
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
                         <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-1">
-                                    <i class="pe-7s-cash"></i>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-people"></i>
                                 </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text">sh {{ $toatalbills }}</div>
-                                        <div class="stat-heading">Total Bills</div>
-                                    </div>
+                                <div class="ps-3">
+                                    <h6>sh {{ $totalbill }}</h6>
+                                    <span class="text-muted small pt-2 ps-1">Total Rent</span>
+
                                 </div>
                             </div>
+                        </div>
+                        <div class="card-header text-center bg-success">
+                            <a class="text-light" href="{{ route('single_import', ['imports' => 'all']) }}">More Info<i class="bi bi-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
+                        <div class="card-body">
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-people"></i>
+                                </div>
+                                <div class="ps-3">
+                                    <h6>sh {{ $payed_bill }}</h6>
+                                    <span class="text-muted small pt-2 ps-1">Payed Rent</span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-header text-center bg-success">
+                            <a class="text-light" href="{{ route('single_import', ['imports' => 'all']) }}">More Info<i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
                         <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-2">
-                                    <i class="pe-7s-cash"></i>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-people"></i>
                                 </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">3435</span></div>
-                                        <div class="stat-heading">Payed</div>
-                                    </div>
+                                <div class="ps-3">
+                                    <h6>sh {{ $unpaid_bill }}</h6>
+                                    <span class="text-muted small pt-2 ps-1">Unpayed Rent</span>
+
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-3">
-                                    <i class="pe-7s-cash"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">349</span></div>
-                                        <div class="stat-heading">Pending</div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="card-header text-center bg-success">
+                            <a class="text-light" href="{{ route('single_import', ['imports' => 'all']) }}">More Info<i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
+                <div class="col-xxl-4 col-md-6">
+                    <div class="card info-card sales-card">
                         <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-4">
-                                    <i class="pe-7s-cash"></i>
+
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                    <i class="bi bi-people"></i>
                                 </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">2986</span></div>
-                                        <div class="stat-heading">Overdue</div>
-                                    </div>
+                                <div class="ps-3">
+                                    <h6>sh {{ $overdue_bill }}</h6>
+                                    <span class="text-muted small pt-2 ps-1">Overdue Rent</span>
+
                                 </div>
                             </div>
+                        </div>
+                        <div class="card-header text-center bg-success">
+                            <a class="text-light" href="{{ route('single_import', ['imports' => 'all']) }}">More Info<i class="bi bi-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-1">
-                                    <i class="pe-7s-cash"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text">{{ $total_m_readings }}</div>
-                                        <div class="stat-heading">Total Units</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-2">
-                                    <i class="pe-7s-cash"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">3435</span></div>
-                                        <div class="stat-heading">Payed Units</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-3">
-                                    <i class="pe-7s-cash"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">349</span></div>
-                                        <div class="stat-heading">Unpayed Units</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="clearfix"></div>
             <div class="orders">
                 <div class="row">
@@ -175,40 +207,43 @@
                                 }
                             </style>
                             <div class="card-header">
-                                <strong class="card-title">Monthly Water Units Report</strong>
+                                <strong class="card-title">Tenant Rents</strong>
                                 <div>
-                                    <a href="{{ route('single_report', ['report' =>  'water bills']) }}" class="btn btn-secondary">Report +</a>
+                                    <a href="{{ route('single_report', ['report' =>  'water bills']) }}" class="btn btn-secondary">Generate Report +</a>
                                 </div>
                             </div>
                             <div class="card-body">
                                 <div class="table-stats order-table ov-h">
-                                    <table class="table ">
+                                    <table class="table table-borderless datatable">
                                         <thead>
                                             <tr>
                                                 <th class="serial">ID</th>
-                                                <th>Date</th>
-                                                <th>Month</th>
-                                                <th>NO. Clients</th>
-                                                <th>Status</th>
+                                                <th>Client No.</th>
+                                                <th>Balance</th>
+                                                <th>Unpaid Bill</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @php
-                                            $waterbills = App\Models\WaterBills::all();
+                                            $rentbills = App\Models\RentBills::all();
                                             @endphp
-                                            @foreach ($waterbills as $waterbill)
+                                            @foreach ($rentbills as $rentbill)
                                             <tr class=" pb-0">
-                                                <td class="serial">{{ $waterbill->id }}</td>
-                                                <td> {{ $waterbill->date }} </td>
-                                                <td> <span class="name">{{ $waterbill->month }}</span> </td>
-                                                <td><span class="count">{{ $waterbill->no_clients }}</span>
+                                                <td class="serial">{{ $rentbill->id }}</td>
+                                                <td> {{ $rentbill->client_id }} </td>
+                                                <td> <span class="name">{{ $rentbill->balance }}</span> </td>
+                                                <td><span class="count">{{ $rentbill->unpaid_bill }}</span>
                                                 </td>
                                                 <td>
-                                                    <span class="badge badge-complete">{{ $waterbill->status }}</span>
-                                                </td>
-                                                <td>
-                                                    <span class="badge badge-complete">{{ $waterbill->action }}</span>
+                                                    <div style="display: flex; align-items: center; gap: 8px;">
+                                                        <form action="{{ route('client.view') }}" method="POST">
+                                                            @csrf
+                                                            <input type="hidden" name="client_id" value="{{ $rentbill->id }}">
+                                                            <button class="btn btn-success" type="submit"><i class="ti ti-book"></i></button>
+                                                        </form>
+                                                        <a class="btn btn-secondary ml-2" href="{{ route('single.client', ['client' => $rentbill->id]) }}"><i class="bi bi-"></i></a>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             @endforeach
@@ -221,6 +256,79 @@
                     </div>
                     <div class="col-xl-4">
                         <div class="row">
+                            <div class="col-lg-6 col-xl-12">
+                                <div class="card br-0">
+                                    <div class="card-body">
+
+                                        <div class="calc-text-container">
+                                            <div class="calc-text">
+                                                <p name="user-input" id="user-input">0</p>
+                                            </div>
+                                            <div class="calc-keys">
+                                                <button type="button" class="key-others operations">AC</button>
+                                                <button type="button" class="key-others operations">DEL</button>
+                                                <button type="button" class="key-others operations">%</button>
+                                                <button type="button" class="key-operate operations">/</button>
+                                                <button type="button" class="numbers">7</button>
+                                                <button type="button" class="numbers">8</button>
+                                                <button type="button" class="numbers">9</button>
+                                                <button type="button" class="key-operate operations">*</button>
+                                                <button type="button" class="numbers">4</button>
+                                                <button type="button" class="numbers">5</button>
+                                                <button type="button" class="numbers">6</button>
+                                                <button type="button" class="key-operate operations">-</button>
+                                                <button type="button" class="numbers">1</button>
+                                                <button type="button" class="numbers">2</button>
+                                                <button type="button" class="numbers">3</button>
+                                                <button type="button" class="key-operate operations">+</button>
+                                                <button type="button" class="key-zero numbers">0</button>
+                                                <button type="button" class="numbers">.</button>
+                                                <button type="button" class="key-operate operations">=</button>
+                                            </div>
+                                        </div>
+                                        <script>
+                                            const inputValue = document.getElementById("user-input");
+                                            document.querySelectorAll(".numbers").forEach(function(item) {
+                                                item.addEventListener("click", function(e) {
+                                                    if (inputValue.innerText === "NaN") {
+                                                        inputValue.innerText = "";
+                                                    }
+                                                    if (inputValue.innerText === "0") {
+                                                        inputValue.innerText = "";
+                                                    }
+                                                    inputValue.innerText += e.target.innerHTML.trim();
+                                                });
+                                            });
+
+                                            document.querySelectorAll(".operations").forEach(function(item) {
+                                                item.addEventListener("click", function(e) {
+                                                    const value = e.target.innerHTML.trim();
+                                                    if (value === "AC") {
+                                                        inputValue.innerText = "0";
+                                                    } else if (value === "DEL") {
+                                                        inputValue.innerText = inputValue.innerText.slice(0, -1) || "0";
+                                                    } else if (value === "=") {
+                                                        try {
+                                                            inputValue.innerText = eval(inputValue.innerText);
+                                                        } catch {
+                                                            inputValue.innerText = "NaN";
+                                                        }
+                                                    } else if (value === "%") {
+                                                        inputValue.innerText = (parseFloat(inputValue.innerText) / 100).toString();
+                                                    } else {
+                                                        if (!isNaN(inputValue.innerText.slice(-1))) {
+                                                            inputValue.innerText += value;
+                                                        }
+                                                    }
+                                                });
+                                            });
+                                        </script>
+
+
+
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-lg-6 col-xl-12">
                                 <div class="card br-0">
                                     <div class="card-body">
@@ -260,7 +368,7 @@
                                         <h4>Update specific Water Tenant Bill</h4>
                                         <div class="form  mt-4">
                                             @php
-                                            $clients = \App\Models\Clients::all();
+                                            $clients = \App\Models\Tenant::all();
                                             @endphp
 
                                             <form action="{{ route('water.single.payment') }}" method="POST" enctype="multipart/form-data">
@@ -327,24 +435,6 @@
 
 
 
-                                            {{--
-                                                <script>
-                                                    document.getElementById('client_name').addEventListener('change', function() {
-                                                        var clientId = this.value;
-                                                        fetch('/get-houses/' + clientId)
-                                                            .then(response => response.json())
-                                                            .then(data => {
-                                                                var houseSelect = document.getElementById('house_no');
-                                                                houseSelect.innerHTML = '';
-                                                                data.forEach(function(house) {
-                                                                    var option = document.createElement('option');
-                                                                    option.text = house.house_no;
-                                                                    option.value = house.house_no;
-                                                                    houseSelect.appendChild(option);
-                                                                });
-                                                            });
-                                                    });
-                                                </script> --}}
                                         </div>
                                     </div>
                                 </div>

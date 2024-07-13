@@ -61,7 +61,7 @@
 
 
               <div class="card-body">
-                <h5 class="card-title">Total Clients</h5>
+                <h5 class="card-title">Total Tenant</h5>
 
                 <div class="d-flex align-items-center">
                   <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -69,7 +69,7 @@
                   </div>
                   <div class="ps-3">
                     <h6>{{ $t_clients }}</h6>
-                    <span class="text-muted small pt-2 ps-1">Total Clients</span>
+                    <span class="text-muted small pt-2 ps-1">Total Tenant</span>
 
                   </div>
                 </div>
@@ -110,7 +110,7 @@
                                 new Chart(document.querySelector('#barChart'), {
                                     type: 'bar',
                                     data: {
-                                        labels: ['Clients', 'Houses', 'Users', 'Water Bills','water meter readings'],
+                                        labels: ['Tenant', 'Houses', 'Users', 'Water Bills','water meter readings'],
                                         datasets: [{
                                             label: 'Bar Chart',
                                             data: Object.values(chartData),
