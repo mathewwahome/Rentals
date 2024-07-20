@@ -49,7 +49,7 @@
                                             <button class="btn btn-primary w-100" type="submit">Login</button>
                                         </div>
                                         <div class="col-12">
-                                            <p class="small mb-0"><a href="pages-register.html">Forgotten Password?</p>
+                                            <p class="small mb-0"><a href="{{url('password/forgot')}}">Forgotten Password?</p>
                                         </div>
                                     </form>
                                 </div>
