@@ -55,12 +55,18 @@ Route::prefix('notice')->name('not.')->group(function () {
 
     Route::prefix('out')->name('out.')->group(function () {
         Route::get('out', [MessagesController::class, 'notice'])->name('all');
-        Route::get('water-bills', [MessagesController::class, 'waterbills'])->name('water-bills');
+        Route::get('sms', [MessagesController::class, 'sms'])->name('sms');
+        Route::get('email', [MessagesController::class, 'email'])->name('email');
+    });
+
+    Route::prefix('sms')->name('sms.')->group(function () {
+        Route::get('single', [MessagesController::class, 'single'])->name('single');
+        
     });
 });
 
 
-
+   
 
 //
 

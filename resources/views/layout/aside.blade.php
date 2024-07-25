@@ -26,7 +26,6 @@
                     <span>Houses</span>
                 </a>
             </li>
-            <!-- Tenants Section -->
             <li class="nav-heading">Tenants</li>
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#Tenants-nav" data-bs-toggle="collapse" href="#">
@@ -45,7 +44,6 @@
                     </li>
                 </ul>
             </li>
-            <!-- Accounting Section -->
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#Accounting-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-menu-button-wide"></i><span>Accounting</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -68,7 +66,6 @@
                     </li>
                 </ul>
             </li>
-            <!-- Notifications Section -->
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#Notifications-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-menu-button-wide"></i><span>Notifications</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -76,28 +73,23 @@
                 <ul id="Notifications-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
                     <li>
                         <a href="{{ route('not.out.all') }}">
-                            <i class="bi bi-circle"></i><span>All</span>
+                            <i class="bi bi-circle"></i><span>Notifications Dashboard</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('not.out.all') }}">
+                        <a href="{{ route('not.out.sms') }}">
                             <i class="bi bi-circle"></i><span>SMS</span>
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('not.out.all') }}">
+                        <a href="{{ route('not.out.email') }}">
                             <i class="bi bi-circle"></i><span>Email</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="{{ route('not.out.water-bills') }}">
-                            <i class="bi bi-circle"></i><span>Water Bills</span>
-                        </a>
-                    </li>
+                  
                 </ul>
             </li>
             <li class="nav-heading">ADMIN</li>
-            <!-- Admin Section -->
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#Admin-nav" data-bs-toggle="collapse" href="#">
                     <i class="bi bi-layout-text-window-reverse"></i><span>Admin</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -120,8 +112,6 @@
                     </li>
                 </ul>
             </li>
-            <!-- End Tables Nav -->
-            <!-- Additional Nav Items -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('admintheme') }}">
                     <i class="bi bi-person"></i>

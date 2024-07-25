@@ -142,7 +142,7 @@
                                                 <th class="serial">ID</th>
                                                 <th>Date</th>
                                                 <th>Month</th>
-                                                <th>NO. Clients</th>
+                                                <th>NO. Tenant</th>
                                                 <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -206,7 +206,7 @@
                                         <h4>Update specific Water Tenant Bill</h4>
                                         <div class="form  mt-4">
                                             @php
-                                            $clients = \App\Models\Clients::all();
+                                            $clients = \App\Models\Tenant::all();
                                             @endphp
 
                                             <form action="{{ route('water.single.payment') }}" method="POST" enctype="multipart/form-data">

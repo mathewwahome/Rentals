@@ -11,9 +11,9 @@ class AfricasTalkingController extends Controller
     public function sendSMS(Request $request)
     {
 
-        $username = 'mathewwahome';
-        $apiKey =  'atsk_51fbc1fd6b7cd1d3b90136a26d47f67bcedf1106205d0da19545e51750a0b227fee7e483';
-        $senderId = 'YNetSlution';
+        $username = env('AFRICASTALKING_USERNAME');
+        $apiKey =  env('AFRICASTALKING_API_KEY');
+        $senderId = env('AFRICASTALKING_APP_NAME');
 
         if (!$username || !$apiKey || !$senderId) {
             return response()->json(['success' => false, 'error' => 'Missing AfricasTalking credentials or sender ID']);
@@ -27,7 +27,7 @@ class AfricasTalkingController extends Controller
         ]);
 
 
-        $recipient = "+254759522811";
+        $recipient = "+2547........";
         $message = $request->input('message');
 
         try {

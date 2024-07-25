@@ -97,78 +97,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12 col-sm-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong>Client Report</strong>
-                        </div>
-                        <div class="card-body card-block">
-                            <p>Generate Report</p>
-                            <form method='post' action="{{ url('client-report-generation') }}">
-                                @csrf
-                                <div class="form-group">
-                                    <label class=" form-control-label">Client Type</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                        <select name="client_type" required id="client_type" class="form-control">
-                                            <option value="all">all</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" form-control-label">Format</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-file"></i></div>
-                                        <select name="format" required id="format" class="form-control">
-                                            <option value="csv">CSV</option>
-                                            <option value="excel">Excel</option>
-                                            <option value="pdf">PDF</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-secondary btn-sm form-control">Export</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12 col-sm-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <strong>Client Report</strong>
-                        </div>
-                        <div class="card-body card-block">
-                            <p>Generate Report</p>
-                            <form method='post' action="{{ url('client-report-generation') }}">
-                                @csrf
-                                <div class="form-group">
-                                    <label class=" form-control-label">Client Type</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-user"></i></div>
-                                        <select name="client_type" required id="client_type" class="form-control">
-                                            <option value="all">all</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class=" form-control-label">Format</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="fa fa-file"></i></div>
-                                        <select name="format" required id="format" class="form-control">
-                                            <option value="csv">CSV</option>
-                                            <option value="excel">Excel</option>
-                                            <option value="pdf">PDF</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-secondary btn-sm form-control">Export</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                
+              
                 @include('layout.footer')
                 @include('layout.scripts')
             </div>
