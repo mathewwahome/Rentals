@@ -10,7 +10,7 @@ class Tenant extends Model
     use HasFactory;
 
     protected $fillable = [
-        'client_id', 'balance', 'previous_bill', 'unpaid_bill'
+        'client_name', 'phone', 'email', 'id_number', 'house_no', 'status', 'entry_date'
     ];
 
     // Define the relationship to messages

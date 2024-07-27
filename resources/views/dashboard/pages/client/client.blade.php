@@ -7,11 +7,9 @@
 
 <body>
     @php
-    $webusers = App\Models\WebUsers::count();
-    $appusers = App\Models\WebUsers::count();
-    $t_houses = App\Models\Houses::count();
-    $t_clients = App\Models\Tenant::count();
-    $clients = App\Models\Tenant::all();
+    $all_tenants = App\Models\Tenant::count();
+   
+    $tenants = App\Models\Tenant::all();
     @endphp
     @include('layout.header')
     @include('layout.aside')
@@ -34,73 +32,27 @@
             <div class="row">
 
                 <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-1">
-                                    <i class="pe-7s-users"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{$webusers}}</span></div>
-                                        <div class="stat-heading">Web Users</div>
+                    <div class="info-card sales-card ">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                        <i class="bi bi-file-earmark-text"></i>
+                                    </div>
+                                    <div class="ps-3">
+                                        <h6>{{ $all_tenants }}</h6>
+                                        <span class="text-muted small pt-2 ps-1">Total Tenants</span>
+
                                     </div>
                                 </div>
+                            </div>
+                            <div class="card-header text-center bg-success">
+                                <a class="text-light" href="{{ route('single_report', ['report' => 'client']) }}">More Info<i class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-3">
-                                    <i class="pe-7s-users"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{$appusers}}</span></div>
-                                        <div class="stat-heading">App Users</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-4">
-                                    <i class="pe-7s-users"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{$t_clients}}</span></div>
-                                        <div class="stat-heading">Total Tenant</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="stat-widget-five">
-                                <div class="stat-icon dib flat-color-2">
-                                    <i class="pe-7s-home"></i>
-                                </div>
-                                <div class="stat-content">
-                                    <div class="text-left dib">
-                                        <div class="stat-text"><span class="count">{{$t_houses}}</span></div>
-                                        <div class="stat-heading">Total Houses</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -113,9 +65,9 @@
                             }
                         </style>
                         <div class="card-header">
-                            <strong class="card-title">Client Table</strong>
+                            <strong class="card-title">Tenants Table</strong>
                             <div>
-                                <a href="{{ route('single_report', ['report' => 'client']) }}" class="btn btn-secondary">Report</a>
+                                <a href="{{ route('single_report', ['report' => 'tenant']) }}" class="btn btn-secondary">Report</a>
                                 <a href="" type="button" class="btn btn-secondary">New Client +</a>
                             </div>
                         </div>
@@ -134,22 +86,22 @@
                                 </thead>
                                 <tbody>
 
-                                    @foreach ($clients as $client)
+                                    @foreach ($tenants as $tenant)
                                     <tr>
-                                        <td>{{ $client->id }}</td>
-                                        <td>{{ $client->client_name }}</td>
-                                        <td>{{ $client->email }}</td>
-                                        <td>{{ $client->phone }}</td>
-                                        <td>{{ $client->house_no }}</td>
+                                        <td>{{ $tenant->id }}</td>
+                                        <td>{{ $tenant->client_name }}</td>
+                                        <td>{{ $tenant->email }}</td>
+                                        <td>{{ $tenant->phone }}</td>
+                                        <td>{{ $tenant->house_no }}</td>
                                         <td>status</td>
                                         <td>
                                             <div style="display: flex; align-items: center; gap: 8px;">
                                                 <form action="{{ route('client.view') }}" method="POST">
                                                     @csrf
-                                                    <input type="hidden" name="client_id" value="{{ $client->id }}">
+                                                    <input type="hidden" name="client_id" value="{{ $tenant->id }}">
                                                     <button class="btn btn-success" type="submit"><i class="bi bi-book"></i></button>
                                                 </form>
-                                                <a class="btn btn-secondary ml-2" href="{{ route('single.client', ['client' => $client->id]) }}"><i class="bi bi-pencil"></i></a>
+                                                <a class="btn btn-secondary ml-2" href="{{ route('single.client', ['client' => $tenant->id]) }}"><i class="bi bi-pencil"></i></a>
                                             </div>
                                         </td>
                                     </tr>
