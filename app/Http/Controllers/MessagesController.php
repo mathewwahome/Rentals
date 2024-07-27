@@ -5,10 +5,27 @@ namespace App\Http\Controllers;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use AfricasTalking\SDK\AfricasTalking;
+use App\Models\Message;
 use Illuminate\Support\Facades\Log;
 
 class MessagesController extends Controller
 {
+    public function store(Request $request)
+    {
+        $request->validate([
+            'tenant_id' => 'required|exists:tenants,id',
+            'message' => 'required|string',
+        ]);
+
+        $message = Message::create([
+            'tenant_id' => $request->tenant_id,
+            'message' => $request->message,
+        ]);
+
+        return redirect()->back();
+    }
+
+
     public function notice()
     {
         return view('dashboard.pages.notifications.all');
@@ -24,7 +41,7 @@ class MessagesController extends Controller
     public function single(Request $request)
     {
         $message = new Notification();
-  
+
 
 
         $username = env('AFRICASTALKING_USERNAME');

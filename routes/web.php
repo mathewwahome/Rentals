@@ -158,3 +158,9 @@ Route::get('password/forgot', [ForgotPasswordController::class, 'showLinkRequest
 Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+
+
+
+//  edit
+Route::post('/tenant_edit/{id}', [ClientController::class, 'tenantEdit'])->name('tenant.edit');
+Route::post('/messages', [MessagesController::class, 'store'])->name('messages.store');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Houses;
+use App\Models\Message;
 use App\Models\RentBills;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
@@ -56,12 +57,27 @@ class ClientController extends Controller
         if (!$client) {
             abort(404);
         }
-        return view('dashboard.pages.client.single-client', compact('client'));
+        $messages = Message::with('Tenant')->orderBy('created_at', 'asc')->get();
+        
+        return view('dashboard.pages.client.single-client', compact('client', 'messages'));
     }
 
     public function clientedit($client)
     {
         $client = Tenant::find($client);
         return view('dashboard.pages.client.client-edit',  compact('client'));
+    }
+    public function tenantEdit($id, Request $request)
+    {
+        $client = Tenant::find($id);
+        if ($client) {
+            $client->client_name = $request->input('client_name');
+            $client->phone = $request->input('phone');
+            $client->email = $request->input('email');
+            $client->house_no = $request->input('house_no');
+            $client->save();
+        }
+
+        return redirect()->back()->with('success', 'Tenant updated successfully!');
     }
 }

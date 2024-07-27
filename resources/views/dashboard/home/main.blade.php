@@ -95,55 +95,54 @@
             </div>
           </div>
           <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-bod-y">
-                        <h5 class="card-title">Generated Reports Graph</h5>
-                        <div id="chartData" data-chart-data="{{ json_encode($chartData) }}" style="display:none;"></div>
-                        <!-- const chartData = @json($chartData); -->
-                        <canvas id="barChart" style="max-height: 400px;"></canvas>
-                        <script>
-                            
-                            document.addEventListener("DOMContentLoaded", () => {
-                                const chartDataElement = document.getElementById('chartData');
-                                const chartData = JSON.parse(chartDataElement.getAttribute('data-chart-data'));
+            <div class="card">
+              <div class="card-bod-y">
+                <h5 class="card-title">Generated Reports Graph</h5>
+                <div id="chartData" data-chart-data="{{ json_encode($chartData) }}" style="display:none;"></div>
+                <!-- const chartData = @json($chartData); -->
+                <canvas id="barChart" style="max-height: 400px;"></canvas>
+                <script>
+                  document.addEventListener("DOMContentLoaded", () => {
+                    const chartDataElement = document.getElementById('chartData');
+                    const chartData = JSON.parse(chartDataElement.getAttribute('data-chart-data'));
 
-                                new Chart(document.querySelector('#barChart'), {
-                                    type: 'bar',
-                                    data: {
-                                        labels: ['Tenant', 'Houses', 'Users', 'Water Bills','water meter readings'],
-                                        datasets: [{
-                                            label: 'Bar Chart',
-                                            data: Object.values(chartData),
-                                            backgroundColor: [
-                                                'rgba(255, 99, 132, 0.2)',
-                                                'rgba(255, 159, 64, 0.2)',
-                                                'rgba(255, 205, 86, 0.2)',
-                                                'rgba(75, 192, 192, 0.2)',
-                                                'rgba(54, 162, 235, 0.2)'
-                                            ],
-                                            borderColor: [
-                                                'rgb(255, 99, 132)',
-                                                'rgb(255, 159, 64)',
-                                                'rgb(255, 205, 86)',
-                                                'rgb(75, 192, 192)',
-                                                'rgb(54, 162, 235)'
-                                            ],
-                                            borderWidth: 1
-                                        }]
-                                    },
-                                    options: {
-                                        scales: {
-                                            y: {
-                                                beginAtZero: true
-                                            }
-                                        }
-                                    }
-                                });
-                            });
-                        </script>
-                    </div>
-                </div>
+                    new Chart(document.querySelector('#barChart'), {
+                      type: 'bar',
+                      data: {
+                        labels: ['Tenant', 'Houses', 'Users', 'Water Bills', 'water meter readings'],
+                        datasets: [{
+                          label: 'Bar Chart',
+                          data: Object.values(chartData),
+                          backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 205, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)'
+                          ],
+                          borderColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 159, 64)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)'
+                          ],
+                          borderWidth: 1
+                        }]
+                      },
+                      options: {
+                        scales: {
+                          y: {
+                            beginAtZero: true
+                          }
+                        }
+                      }
+                    });
+                  });
+                </script>
+              </div>
             </div>
+          </div>
 
           <!-- Recent Sales -->
           <div class="col-12">
@@ -168,20 +167,20 @@
                       <td class="serial">{{ $latestclient->id }}</td>
                       <td class="avatar">
                         <div class="round-img">
-                          <a href="#"><img class="rounded-circle" src="images/user/default.png" alt=""></a>
+                          <a href="#"><img style="height: 30px; width:30px;" class="rounded-circle" src="images/user/default.png" alt=""></a>
                         </div>
                       </td>
                       <td> {{ $latestclient->client_name }} </td>
                       <td> {{ $latestclient->email }} </td>
                       <td><span class="count">{{ $latestclient->phone }}</span></td>
                       <td>
-                        <div class="row ml-2">
+                        <div style="display: flex; align-items: center; gap: 8px;">
                           <form action="{{ route('client.view') }}" method="POST">
                             @csrf
                             <input type="hidden" name="client_id" value="{{ $latestclient->id }}">
-                            <button class="btn btn-success" type="submit"><i class="ti ti-book"></i></button>
+                            <button class="btn btn-success" type="submit"><i class="bi bi-book"></i></button>
                           </form>
-                          <a class="btn btn-secondary ml-2" href="{{ route('single.client', ['client' => $latestclient->id]) }}"><i class="fa fa-pencil"></i></a>
+                          <a class="btn btn-secondary ml-2" href="{{ route('single.client', ['client' => $latestclient->id]) }}"><i class="bi bi-pencil"></i></a>
                         </div>
                       </td>
                     </tr>
